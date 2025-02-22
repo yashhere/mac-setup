@@ -90,7 +90,7 @@ brew "jozefcipa/novus/novus"
 # Android SDK component
 cask "android-platform-tools"
 # Docker-desktop
-cask "docker"
+# cask "docker"
 # Fonts
 cask "font-hack-nerd-font"
 cask "font-hasklig"

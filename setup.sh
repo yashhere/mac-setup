@@ -93,6 +93,7 @@ list_modules() {
 main() {
     local modules=(
         "base" # Basic system configuration
+        "system_prefs"
         # "network"       # Static IP and network setup
         # "docker"        # Docker installation and configuration
         # "tools"         # Development tools

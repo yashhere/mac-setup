@@ -1,1 +1,7 @@
+.aider.*
+!.aider.conf.yml
+.env
+**/aider/.aider/caches
+*.log
+*.env
 .aider*
