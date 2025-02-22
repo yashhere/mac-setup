@@ -183,7 +183,7 @@ apply_setting() {
     local value="$3"
     local type="$4"
 
-    echo "Applying setting: $domain $key = $value ($type)"
+    log_info "Applying setting: $domain $key = $value ($type)"
 
     # Handle system-level vs user-level preferences
     if [[ "$domain" == /* ]]; then
@@ -199,14 +199,14 @@ apply_setting() {
 }
 
 restart_processes() {
-    echo "Restarting affected processes..."
+    log_info "Restarting affected processes..."
 
     # Restart each unique process only once
     declare -A PROCESSES_RESTARTED
     for domain in "${!DOMAINS_TO_RESTART[@]}"; do
         local process="${DOMAIN_PROCESS_MAP[$domain]}"
         if [[ -z "${PROCESSES_RESTARTED[$process]+x}" ]]; then
-            echo "Restarting $process..."
+            log_info "Restarting $process..."
             killall "$process" >/dev/null 2>&1 || true
             PROCESSES_RESTARTED["$process"]=1
         fi
@@ -255,8 +255,8 @@ setup_system_prefs() {
     killall SystemUIServer >/dev/null 2>&1 || true
     killall cfprefsd >/dev/null 2>&1 || true
 
-    echo "Configuration complete!"
-    echo "Some changes may require restart or re-login to take effect."
+    log_info "Configuration complete!"
+    log_info "Some changes may require restart or re-login to take effect."
 }
 
 # defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true

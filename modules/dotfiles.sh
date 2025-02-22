@@ -1,6 +1,3 @@
-# List of packages to skip
-SKIP_PACKAGES=("aichat" "ssh" "gh" "git")
-
 # Backup directory
 BACKUP_DIR="${HOME}/.dotfiles_backup"
 
@@ -26,7 +23,7 @@ backup_file() {
 # Function to check if a package should be skipped
 should_skip_package() {
     local package="$1"
-    for skip_package in "${SKIP_PACKAGES[@]}"; do
+    for skip_package in "${SKIP_STOW_PACKAGES[@]}"; do
         if [[ "$package" == "$skip_package" ]]; then
             return 0 # Package should be skipped
         fi
@@ -46,10 +43,10 @@ setup_dotfiles() {
 
     # # Clone dotfiles repository if it doesn't exist
     # if [ ! -d ~/dotfiles ]; then
-    #     echo "Cloning dotfiles repository..."
+    #     log_info "Cloning dotfiles repository..."
     #     git clone https://github.com/yashhere/dotfiles.git ~/dotfiles
     # else
-    #     echo "Dotfiles repository already exists. Updating..."
+    #     log_info "Dotfiles repository already exists. Updating..."
     #     cd ~/dotfiles && git pull
     # fi
 
