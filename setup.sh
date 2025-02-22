@@ -94,6 +94,7 @@ main() {
     local modules=(
         "base" # Basic system configuration
         "system_prefs"
+        # "shell"
         # "network"       # Static IP and network setup
         # "docker"        # Docker installation and configuration
         # "tools"         # Development tools
@@ -101,7 +102,7 @@ main() {
         # "nodejs"        # Node.js development environment
         # "golang"        # Go development environment
         # "gnome"         # GNOME configuration and extensions
-        # "dotfiles"      # GNU Stow dotfiles setup
+        "dotfiles" # GNU Stow dotfiles setup
     )
 
     # setup.sh
