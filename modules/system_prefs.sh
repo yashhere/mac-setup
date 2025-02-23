@@ -165,6 +165,10 @@ CONFIG_SETTINGS=(
     "com.apple.TextEdit PlainTextEncoding 4 int"         # Open files as UTF-8 in TextEdit
     "com.apple.TextEdit PlainTextEncodingForWrite 4 int" # Save files as UTF-8 in TextEdit
 
+    # Menu bar
+    # see http://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_Patterns
+    defaults write com.apple.menuextra.clock "DateFormat" 'EEE d MMM h:mm:ss a'
+
     # SYSTEM SECURITY
     # "/Library/Preferences/com.apple.alf globalstate 1 int"  # Enable firewall
 

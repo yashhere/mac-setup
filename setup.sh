@@ -6,7 +6,7 @@ IFS=$'\n\t'
 # Root directory of the setup scripts
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 MODULES_DIR="${SCRIPT_DIR}/modules"
-CONFIG_DIR="${SCRIPT_DIR}/configs"
+DOTFILES_DIR="${SCRIPT_DIR}/dotfiles"
 LOG_FILE="${SCRIPT_DIR}/setup.log"
 
 # Colors for output
@@ -82,20 +82,31 @@ run_module() {
 
 # List available modules
 list_modules() {
-    echo "Available modules:"
+    log_info "Available modules:"
     for module in "${MODULES_DIR}"/*.sh; do
         [[ -f "$module" ]] || continue
         basename "$module" .sh
     done
 }
 
+check_macos() {
+    osname=$(uname)
+
+    if [ "$osname" != "Darwin" ]; then
+        log_info "Oops, it looks like you're using a non-Apple system. Sorry, this script only supports macOS. Exiting..."
+        exit 1
+    fi
+}
+
 # Main setup function
 main() {
+    check_macos
+
     local modules=(
-        # "base" # Basic system configuration
-        # "system_prefs"
+        "base"     # Basic system configuration
         "dotfiles" # GNU Stow dotfiles setup
-        "dev"
+        "configuration"
+        "system_prefs"
         # "shell"
         # "network"       # Static IP and network setup
         # "docker"        # Docker installation and configuration
@@ -112,12 +123,12 @@ main() {
         source .env
         set +a
     else
-        echo "Error: .env file not found"
+        log_error "Error: .env file not found"
         exit 1
     fi
 
     # Create necessary directories
-    mkdir -p "${MODULES_DIR}" "${CONFIG_DIR}"
+    mkdir -p "${MODULES_DIR}"
     : >"${LOG_FILE}"
 
     log_info "Starting MacOS setup script"
@@ -152,7 +163,7 @@ while [[ $# -gt 0 ]]; do
         exit 0
         ;;
     --help)
-        echo "Usage: $0 [--skip-network] [--module <module_name>] [--list-modules] [--help]"
+        log_error "Usage: $0 [--skip-network] [--module <module_name>] [--list-modules] [--help]"
         exit 0
         ;;
     *)

@@ -12,6 +12,8 @@ Thumbs.db
 # Files that might appear on external disks
 .Spotlight-V100
 .Trashes
+.AppleDouble
+.LSOverride
 
 # Compiled Python files
 *.pyc
@@ -30,3 +32,6 @@ cscope.files
 # General
 log/
 *.log
+
+# npm things
+npm-debug.log

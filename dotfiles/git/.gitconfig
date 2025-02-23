@@ -1,4 +1,12 @@
+# vim:ft=gitconfig
+
+[include]
+    # A local gitconfig, outside of version control.
+    # If the file doesn't exist it is silently ignored
+    path = ~/.gitconfig-local
+
 [alias]
+# Basic commands aliases
 st = status
 ct = commit
 cl = clone
@@ -7,47 +15,106 @@ co = checkout
 df = diff
 ds = diff --stat
 dc = diff --cached
-lg = log --color --graph --pretty=format:'%Cgreen[%Creset%h%Cgreen]%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 ec = config --global -e
-la = "!git config -l | grep alias | cut -c 7-"
-branches = branch -a
-ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
-ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
-ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+la = "!git config -l | grep alias | cut -c 7-" # List all git aliases
+
+# Log related aliases
+lg = log --color --graph --pretty=format:'%Cgreen[%Creset%h%Cgreen]%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit # Pretty commit graph
+ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate                                             # Short log with decorations
+ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat                                              # Short log with numstat
+ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative                                        # Short log with relative dates
+
+branches = branch -a # List all branches (local and remote)
+
+# Churn related alias
+# order files by number of commits, ascending
+# Written by Corey Haines, Scriptified by Gary Bernhardt
+# Show churn for a time range:
+#   $ git churn --since='1 month ago'
+churn = "!f() { git log --all -M -C --name-only --format='format:' \"$@\" | sort | grep -v '^$' | uniq -c | sort | awk 'BEGIN {print \"count\tfile\"} {print $1 \"\t\" $2}' | sort -g; }; f"
+
+# GitHub CLI aliases
+browse = "!gh repo view --web" # Open current repo in browser
+
+# Date/Time related aliases
+day = "!sh -c 'git log --reverse --no-merges --branches=* --date=local --after=\"yesterday 11:59PM\" --author=\"$(git config --get user.name)\"'" # Show commits from today
+
+# Contribution review aliases
+review = "!git log --no-merges --pretty=%an | head -n 100 | sort | uniq -c | sort -nr" # Top committers in last 100 commits
+count = shortlog -sn                                                                   # Count commits per contributor, sorted
+
+# Branch management aliases
+update = !git fetch upstream && git rebase upstream/$(git rev-parse --abbrev-ref HEAD) # Rebase current branch from upstream
+dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"                 # Delete merged branches
+
+# Tag related aliases
+lt = describe --tags --abbrev=0 # Show the last tag
+
+# Pull Request alias
+# Merge GitHub pull request on top of the current branch or,
+# if a branch name is specified, on top of the specified branch
+mpr = "!f() { \
+		declare currentBranch=\"$(git symbolic-ref --short HEAD)\"; \
+		declare branch=\"${2:-$currentBranch}\"; \
+		if [ $(
+	printf \"%s\" \"$1\" | grep '^[0-9]\\+$' >/dev/null
+	printf $?
+) -eq 0 ]; then \
+			git fetch origin refs/pull/$1/head:pr/$1 && \
+			git checkout -B $branch && \
+			git rebase $branch pr/$1 && \
+			git checkout -B $branch && \
+			git merge pr/$1 && \
+			git branch -D pr/$1 && \
+			git commit --amend -m \"$(git log -1 --pretty=%B)\n\nCloses #$1.\"; \
+		fi \
+	}; f"
+
+# Remote branches listing alias
+latest = "!git for-each-ref --sort='-committerdate' --format='%(color:red)%(refname)%(color:reset)%09%(committerdate)' refs/remotes | sed -e 's-refs/remotes/origin/--' | less -XFR" # List latest remote branches by commit date
+remotes = remote -v                                                                                                                                                                  # List configured remotes
+
+# Diff grep aliases
+dg = "!sh -c 'git ls-files -m | grep $1 | xargs git diff' -"         # Diff grep modified files
+dgc = "!sh -c 'git ls-files | grep $1 | xargs git diff $2 $3 -- ' -" # Diff grep between commits
 
 [push]
-default = simple
+default = current # Default push behavior to current branch
 
 [core]
-editor = vim
-pager = less -x4
-excludesfile = ~/.gitignore_global
-ignorecase = false
+editor = vim                       # Set default editor to vim
+pager = less -x4                   # Use less as pager with tab stop at 4
+excludesfile = ~/.gitignore_global # Global gitignore file
+ignorecase = false                 # Case sensitive filenames
+trustctime = false                 # Make `git rebase` safer on macOS, see: http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/
+untrackedCache = true              # Speed up commands involving untracked files (git status), see: https://git-scm.com/docs/git-update-index#_untracked_cache
 
 [merge]
-conflictstyle = diff3
-tool = meld
-stat = true
+conflictstyle = diff3 # Use diff3 style for merge conflicts
+tool = meld           # Use meld as merge tool
+stat = true           # Show diffstat after merges
+log = true            # Include summaries of merged commits in merge commit messages
 
 [credential]
-helper = manager
+helper = manager # Use git credential manager
 
 [diff]
-mnemonicprefix = true
-renames = copies
+mnemonicprefix = true # Show mnemonic prefixes in diff output
+renames = copies      # Detect copies as renames
 
 [branch]
-autosetuprebase = always
-autosetupmerge = always
+autosetuprebase = always # Default rebase behavior when creating new branches
+autosetupmerge = always  # Default merge behavior when creating new branches
 
 [apply]
-whitespace = nowarn
+whitespace = nowarn # Warn about whitespace errors but don't fail
 
 [rebase]
-autosquash = true
+autosquash = true # Enable autosquash for rebase -i
+autoStash = true  # Automatically stash/pop during rebase
 
 [color]
-ui = always
+ui = always # Always use colors in UI
 branch = auto
 diff = auto
 status = auto
@@ -82,21 +149,17 @@ smudge = git-lfs smudge -- %f
 required = true
 process = git-lfs filter-process
 
-; [commit]
-; gpgsign = true
-
 [help]
-autocorrect = 1
+autocorrect = 1 # Automatically correct typos in commands
 
 [advice]
-statusHints = false
+statusHints = false # Disable status hints
 
 [rerere]
-enabled = true
-
+enabled = true # Enable reuse recorded resolution
 [user]
 name = Yash Agarwal
-email = yagarwal@netskope.com
+email = "13733968+yashhere@users.noreply.github.com"
 
 [status]
 submoduleSummary = false
@@ -107,14 +170,8 @@ defaultBranch = main
 [fetch]
 prune = true
 
-[safe]
-directory = /home/yagarwal/nsbuilder/service
-
 [credential "https://github.com"]
 useHttpPath = true
 
 [url "git@github.com:"]
 insteadOf = https://github.com/
-
-[includeIf "gitdir:~/personal/"]
-path = ~/.gitconfig-personal

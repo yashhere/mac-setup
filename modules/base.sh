@@ -1,4 +1,44 @@
+#!/usr/bin/env bash
+
 BREWFILE="$SCRIPT_DIR/Brewfile"
+
+APP_STORE_PACKAGES=(
+    "1091189122::Bear"
+    "409183694::Keynote"
+    "409203825::Numbers"
+    "409201541::Pages"
+)
+
+install_xcode_cli_tools() {
+    if command -v xcodebuild &>/dev/null; then
+        log_info "Xcode Command Line Tools already installed. Skipping."
+    else
+        log_info "Installing Xcode Command Line Tools…"
+        xcode-select --install
+        if [[ $? -eq 0 ]]; then
+            log_info "Xcode Command Line Tools installed!"
+        else
+            log_error "Xcode Command Line Tools installation failed!"
+            return 1
+        fi
+    fi
+
+    if is_apple_silicon; then
+        if ! pkgutil --pkg-info=com.apple.pkg.RosettaUpdateAuto >/dev/null 2>&1; then
+            log_info "Installing Rosetta"
+            softwareupdate --install-rosetta --agree-to-license
+            if [[ $? -eq 0 ]]; then
+                log_info "Rosetta installed!"
+            else
+                log_error "Rosetta installation failed!"
+                return 1
+            fi
+        else
+            log_info "Rosetta is installed"
+        fi
+    fi
+    return 0
+}
 
 install_homebrew() {
     # Install Homebrew if not already installed
@@ -75,7 +115,57 @@ EOF
     log_info "Homebrew packages installation completed."
 }
 
+mas_setup() {
+    if mas account >/dev/null; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+install_app_store_packages() {
+    if ! command_exists mas; then
+        brew install mas
+    fi
+
+    if mas_setup; then
+        for app in ${APP_STORE_PACKAGES[@]}; do
+            APP_ID="${app%%::*}"
+            APP_NAME="${app##*::}"
+            if ! mas list | grep $APP_ID &>/dev/null; then
+                log_info "Installing $APP_NAME"
+                mas install $APP_ID >/dev/null
+            fi
+        done
+    else
+        log_error "Please signin to App Store first. Skipping."
+    fi
+}
+
+configure_host() {
+    # sudo scutil --set ComputerName "${COMPUTER_NAME:-mac}"
+    # sudo scutil --set LocalHostName "${COMPUTER_NAME:-mac}"
+    # sudo scutil --set HostName "${COMPUTER_NAME:-mac}"
+
+    sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server.plist NetBIOSName -string "${COMPUTER_NAME:-mac}"
+
+    if [ -z "$XDG_CONFIG_HOME" ]; then
+        log_info "Setting up ~/.config directory..."
+        if [ ! -d "${HOME}/.config" ]; then
+            mkdir "${HOME}/.config"
+        fi
+        export XDG_CONFIG_HOME="${HOME}/.config"
+    fi
+
+    if [ ! -d "${HOME}/.local/bin" ]; then
+        log_info "Setting up ~/.local/bin directory..."
+        mkdir -pv "${HOME}/.local/bin"
+    fi
+}
+
 setup_base() {
+    install_xcode_cli_tools
     install_homebrew
     install_packages
+    install_app_store_packages
 }

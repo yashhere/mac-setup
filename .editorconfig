@@ -1,0 +1,41 @@
+# EditorConfig is awesome: https://EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
+[*]
+end_of_line = lf
+insert_final_newline = true
+
+[*.{bash,conf,css,env,fish,js,json,jsx,lua,md,py,sh,toml,ts,tsx,vim,yaml,yml}]
+charset = utf-8
+trim_trailing_whitespace = true
+
+[*.{js,jsx,py,ts,tsx,yaml,yml}]
+indent_style = space
+
+[*.{json,lua,vim}]
+indent_style = tab
+
+[*.{js,json,jsx,ts,tsx,yaml,yml}]
+indent_size = 2
+
+[*.lua]
+max_line_length = 100
+# Stylua
+call_parentheses = always
+quote_type = single
+sort_requires = true
+
+[{vim,nvim,wezterm}/**.lua]
+# Stylua
+call_parentheses = none
+
+[*.py]
+indent_size = 4
+
+[*.vim]
+indent_size = 8
+
+[Makefile]
+indent_style = tab
