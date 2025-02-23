@@ -93,6 +93,17 @@ configure_python() {
 
 configure_nodejs() {
     log_info "Configuring Node"
+    local npm_packages=(
+        typescript
+        ts-node
+        eslint
+        prettier
+        nodemon
+        http-server
+    )
+
+    npm install -g "${npm_packages[@]}"
+    log_success "Node.js development environment setup completed"
 }
 
 configure_golang() {
