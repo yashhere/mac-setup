@@ -107,14 +107,6 @@ main() {
         "dotfiles" # GNU Stow dotfiles setup
         "configuration"
         "system_prefs"
-        # "shell"
-        # "network"       # Static IP and network setup
-        # "docker"        # Docker installation and configuration
-        # "tools"         # Development tools
-        # "python"        # Python development environment
-        # "nodejs"        # Node.js development environment
-        # "golang"        # Go development environment
-        # "gnome"         # GNOME configuration and extensions
     )
 
     # setup.sh

@@ -116,11 +116,13 @@ EOF
 }
 
 mas_setup() {
-    if mas account >/dev/null; then
-        return 0
-    else
-        return 1
-    fi
+    return 1
+    # https://github.com/mas-cli/mas#known-issues
+    # if mas account >/dev/null; then
+    #     return 0
+    # else
+    #     return 1
+    # fi
 }
 
 install_app_store_packages() {

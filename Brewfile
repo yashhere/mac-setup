@@ -5,7 +5,6 @@
 # Taps: Add external repositories for formulae and casks.
 # These extend Homebrew's package availability beyond the core packages.
 tap "homebrew/bundle"         # Allows managing Brewfiles
-tap "homebrew/cask-fonts"     # For installing fonts via cask
 tap "homebrew/services"       # For managing services via brew services
 tap "guumaster/tap"
 tap "jozefcipa/novus"
