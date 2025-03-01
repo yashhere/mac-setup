@@ -1,5 +1,5 @@
 # change your theme
-theme = 'catppuccin'
+theme = 'catppuccin-latte'
 #
 # Auto check for update
 auto_check_update = true

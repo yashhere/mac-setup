@@ -104,6 +104,6 @@
   "editor.codeActionsOnSave": {
 
   },
-  "editor.fontFamily": "Monaco, 'Courier New', monospace",
+  "editor.fontFamily": "Hasklig, 'Courier New', monospace",
   "cloudcode.duetAI.project": "",
 }

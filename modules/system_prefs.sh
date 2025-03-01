@@ -166,9 +166,6 @@ CONFIG_SETTINGS=(
     "com.apple.TextEdit RichText 0 int"                  # Use plain text mode for new documents
     "com.apple.TextEdit PlainTextEncoding 4 int"         # Open files as UTF-8 in TextEdit
     "com.apple.TextEdit PlainTextEncodingForWrite 4 int" # Save files as UTF-8 in TextEdit
-
-    # SYSTEM SECURITY
-    "/Library/Preferences/com.apple.alf globalstate 1 int"  # Enable firewall 
 )
 
 apply_setting() {
@@ -230,7 +227,7 @@ setup_system_prefs() {
         "/System/Library/CoreServices/Menu Extras/Clock.menu"
 
     # Restart automatically if the computer freezes
-    sudo systemsetup -setrestartfreeze on
+    # sudo systemsetup -setrestartfreeze on
 
     # Show the ~/Library folder
     chflags nohidden ~/Library
@@ -256,5 +253,3 @@ setup_system_prefs() {
     log_info "Configuration complete!"
     log_info "Some changes may require restart or re-login to take effect."
 }
-
-# defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true
