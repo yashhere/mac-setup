@@ -51,7 +51,7 @@ CONFIG_SETTINGS=(
     "com.apple.finder QLEnableTextSelection true bool" # allow text selection in Quick Look
 
     # Enable spring loading for directories
-    "NSGlobalDomain com.apple.springing.enabled true bool"
+    "NSGlobalDomain com.apple.springing.enabled false bool"
 
     # Remove the spring loading delay for directories
     "NSGlobalDomain com.apple.springing.delay 0 float"

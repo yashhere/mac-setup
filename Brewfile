@@ -47,10 +47,11 @@ brew "stow"          # Symlink farm manager
 brew "act"          # Run your GitHub Actions locally
 brew "mise"          # Version manager for multiple languages
 brew "direnv"        # Environment switcher for directories
-brew "gnupg"  # enable PGP-signing commits.
+brew "gnupg"        # enable PGP-signing commits.
 brew "make"
 brew "pre-commit"    # Manage and run git hooks
 brew "shellcheck"                      # diagnostics for shell sripts
+brew "gcc"           # GNU compiler collection
 
 # --- Networking Tools ---
 brew "aria2"         # Download manager
@@ -105,6 +106,7 @@ if OS.mac?
     cask "font-sauce-code-pro-nerd-font"
 
     # --- Utilities ---
+    cask "stats"         # System monitoring in your menu bar
     cask "appcleaner"    # Uninstall applications completely
     cask "bitwarden"     # Password manager
     cask "github"        # GitHub Desktop
@@ -121,6 +123,7 @@ if OS.mac?
     cask "vmware-fusion"               # Virtualization software
 
     # --- Development Tools ---
+    cask "android-file-transfer"    # Android File Transfer
     cask "android-platform-tools"
     cask "jetbrains-toolbox" # Manage JetBrains IDEs
     cask "postman"       # API platform

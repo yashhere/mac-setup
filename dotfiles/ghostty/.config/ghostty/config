@@ -9,5 +9,8 @@ macos-titlebar-style = tabs
 working-directory = home
 window-inherit-working-directory = false
 
+window-padding-x = 8
+window-padding-y = 8
+
 keybind = cmd+right=next_tab
 keybind = cmd+left=previous_tab
