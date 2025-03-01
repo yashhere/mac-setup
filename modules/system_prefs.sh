@@ -33,9 +33,10 @@ CONFIG_SETTINGS=(
     "NSGlobalDomain com.apple.trackpad.enableSecondaryClick true bool"
 
     # FILE SYSTEM & FINDER
-    "com.apple.finder AppleShowAllFiles true bool"               # keep hidden files, hidden
+    "com.apple.finder AppleShowAllFiles false bool"               # keep hidden files, hidden
     "com.apple.finder _FXShowPosixPathInTitle true bool"         # Display full POSIX path as window title
     "com.apple.finder _FXSortFoldersFirs true bool"              # Keep folders on top when sorting by name
+    "com.apple.finder _FXSortFoldersFirstOnDesktop true bool"    # Keep folders on top when sorting desktop by name
     "com.apple.finder FXPreferredViewStyle Nlsv string"          # Use list view in all Finder windows by default, other view modes: `icnv`, `clmv`, `glyv`
     "com.apple.finder FXDefaultSearchScope SCcf string"          # search the current folder by default
     "com.apple.finder ShowPathbar true bool"                     # Show path bar
@@ -119,6 +120,7 @@ CONFIG_SETTINGS=(
     "com.apple.dashboard mcx-disabled true bool"                       # Disable Dashboard
     "com.apple.dock showhidden true bool"                              # Make Dock icons of hidden applications translucent
     "com.apple.dock hide-mirror true bool"                             # Make Dock more transparent
+    "com.apple.dock orientation right string"                         # Set Dock position to right
 
     # Screenshots
     "com.apple.screencapture location ${SCREENSHOTS_LOCATION} string" # change screenshot save location
@@ -166,15 +168,7 @@ CONFIG_SETTINGS=(
     "com.apple.TextEdit PlainTextEncodingForWrite 4 int" # Save files as UTF-8 in TextEdit
 
     # SYSTEM SECURITY
-    # "/Library/Preferences/com.apple.alf globalstate 1 int"  # Enable firewall
-
-    # Reveal IP address, hostname, OS version, etc. when clicking the clock
-    # in the login window
-    # "/Library/Preferences/com.apple.loginwindow AdminHostInfo HostName"
-
-    # Enable HiDPI display modes (requires restart)
-    # "/Library/Preferences/com.apple.windowserver DisplayResolutionEnabled true bool"
-
+    "/Library/Preferences/com.apple.alf globalstate 1 int"  # Enable firewall 
 )
 
 apply_setting() {
@@ -236,7 +230,7 @@ setup_system_prefs() {
         "/System/Library/CoreServices/Menu Extras/Clock.menu"
 
     # Restart automatically if the computer freezes
-    # sudo systemsetup -setrestartfreeze on
+    sudo systemsetup -setrestartfreeze on
 
     # Show the ~/Library folder
     chflags nohidden ~/Library

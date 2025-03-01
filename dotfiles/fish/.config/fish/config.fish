@@ -1,5 +1,7 @@
 if status is-interactive
-    # Commands to run in interactive sessions can go here
+    mise activate fish | source
+else
+    mise activate fish --shims | source
 end
 
 set -g fish_greeting
@@ -26,22 +28,6 @@ set -gx XDG_DATA_HOME "$HOME/.local/share"
 set -gx XDG_CACHE_HOME "$HOME/.cache"
 set -gx XDG_STATE_HOME "$HOME/.local/state"
 set -gx DOTFILES "$HOME/dotfiles"
-
-# ASDF configuration code
-set -gx ASDF_DATA_DIR $HOME/.asdf
-source (brew --prefix asdf)/share/fish/vendor_completions.d/asdf.fish
-if test -z $ASDF_DATA_DIR
-    set _asdf_shims "$HOME/.asdf/shims"
-else
-    set _asdf_shims "$ASDF_DATA_DIR/shims"
-end
-
-# Do not use fish_add_path (added in Fish 3.2) because it
-# potentially changes the order of items in PATH
-if not contains $_asdf_shims $PATH
-    set -gx --prepend PATH $_asdf_shims
-end
-set --erase _asdf_shims
 
 # Load Vscode shell integration
 string match -q "$TERM_PROGRAM" vscode

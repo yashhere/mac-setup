@@ -1,0 +1,13 @@
+# Theme settings
+theme = dark:catppuccin-macchiato,light:catppuccin-latte
+bold-is-bright = true
+
+shell-integration-features = no-cursor,sudo
+confirm-close-surface = false
+copy-on-select = clipboard
+macos-titlebar-style = tabs
+working-directory = home
+window-inherit-working-directory = false
+
+keybind = cmd+right=next_tab
+keybind = cmd+left=previous_tab

@@ -1,0 +1,30 @@
+# Example config.toml for mise
+[settings]
+legacy_version_file = true  # For compatibility with .node-version, .python-version etc.
+jobs = 4                    # Number of jobs to run in parallel
+
+[settings.npm]
+bun = true
+
+[settings.cargo]
+binstall = true
+
+[settings.pipx]
+uvx = true
+
+# You can add tool-specific configurations
+[tools]
+node = "lts"
+python = ['3.13']
+rust = "stable"
+go = "latest"
+bun = '1.2.4'
+ruby = '3.4.2'
+cargo-binstall = 'latest'
+
+# npm (there is not .default-npm-packages)
+"npm:eslint" = "latest"
+"npm:prettier" = "latest"
+"npm:typescript" = "latest"
+"npm:ts-node" = "latest"
+"npm:nodemon" = "latest"

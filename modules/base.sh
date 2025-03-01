@@ -88,7 +88,7 @@ brew "coreutils"
 brew "findutils"
 
 # Version managers
-brew "asdf"
+brew "mise"
 
 # Development tools
 # brew "vim"
@@ -145,9 +145,9 @@ install_app_store_packages() {
 }
 
 configure_host() {
-    # sudo scutil --set ComputerName "${COMPUTER_NAME:-mac}"
-    # sudo scutil --set LocalHostName "${COMPUTER_NAME:-mac}"
-    # sudo scutil --set HostName "${COMPUTER_NAME:-mac}"
+    sudo scutil --set ComputerName "${COMPUTER_NAME:-mac}"
+    sudo scutil --set LocalHostName "${COMPUTER_NAME:-mac}"
+    sudo scutil --set HostName "${COMPUTER_NAME:-mac}"
 
     sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server.plist NetBIOSName -string "${COMPUTER_NAME:-mac}"
 

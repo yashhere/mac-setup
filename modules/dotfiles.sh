@@ -80,25 +80,19 @@ setup_dotfiles() {
             continue
         fi
 
-        if ! command_exists "$package"; then
-            log_warning "$package is not installed. Skipping dotfile setup"
-        else
-            log_info "Stowing $package..."
+        # Create backup directory for this stow run if it doesn't exist
+        mkdir -p "$BACKUP_DIR"
 
-            # Create backup directory for this stow run if it doesn't exist
-            mkdir -p "$BACKUP_DIR"
+        # Find potential conflicting files and backup before stow
+        find "$DOTFILES_DIR/$package" -type f -print0 | while IFS= read -r -d $'\0' dotfile_source; do
+            target_file="${HOME}/${dotfile_source#"$DOTFILES_DIR/$package/"}"
+            backup_file "$target_file"
+        done
 
-            # Find potential conflicting files and backup before stow
-            find "$DOTFILES_DIR/$package" -type f -print0 | while IFS= read -r -d $'\0' dotfile_source; do
-                target_file="${HOME}/${dotfile_source#"$DOTFILES_DIR/$package/"}"
-                backup_file "$target_file"
-            done
+        stow -v --no-folding -d "$DOTFILES_DIR" -t ~ "$package"
 
-            stow -v --no-folding -d "$DOTFILES_DIR" -t ~ "$package"
-
-            # uncomment to un-stow
-            # stow -v -D -d "$DOTFILES_DIR" -t ~ "$package"
-        fi
+        # uncomment to un-stow
+        # stow -v -D -d "$DOTFILES_DIR" -t ~ "$package"
     done
 
     log_info "Dotfiles stowed successfully! Backups (if any) are in $BACKUP_DIR"

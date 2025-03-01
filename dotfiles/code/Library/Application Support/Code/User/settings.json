@@ -1,6 +1,5 @@
 {
   "workbench.startupEditor": "newUntitledFile",
-  "editor.lineHeight": 28,
   "editor.tabSize": 4,
   "editor.insertSpaces": true,
   "editor.wordWrap": "on",
@@ -9,24 +8,13 @@
   "editor.minimap.enabled": false,
   "editor.occurrencesHighlight": "singleFile",
   "editor.renderLineHighlight": "all",
-  "editor.cursorWidth": 3,
   "editor.acceptSuggestionOnCommitCharacter": false,
-  "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "terminal.integrated.fontFamily": "Menlo",
-  "terminal.integrated.fontSize": 15,
-  "terminal.integrated.lineHeight": 1.3,
-  "highlight-matching-tag.styles": {
-    "opening": {
-      "name": {
-        "underline": "white",
-        "highlight": "#555"
-      }
-    }
-  },
+  "terminal.integrated.fontSize": 13,
   "files.autoSave": "afterDelay",
   "files.autoSaveDelay": 1000,
-  "editor.fontSize": 14,
+  "editor.fontSize": 13,
   "editor.inlineSuggest.enabled": true,
   "editor.fontLigatures": true,
   "eslint.enable": true,
@@ -51,19 +39,12 @@
   "prettier.singleQuote": true,
   "prettier.trailingComma": "es5",
   "prettier.semi": false,
-  "python.linting.enabled": true,
-  "python.linting.pylintEnabled": true,
-  "python.linting.flake8Enabled": true,
-  "python.formatting.provider": "black",
   "go.useLanguageServer": true,
   "go.formatTool": "goimports",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "javascript.updateImportsOnFileMove.enabled": "always",
   "html.format.enable": true,
   "css.validate": true,
-  "docker.languageserver": {
-    "enabled": true
-  },
   "update.mode": "none",
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -79,21 +60,18 @@
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
-
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "workbench.editor.untitled.hint": "hidden",
   "editor.quickSuggestionsDelay": 5,
   "editor.scrollPredominantAxis": true,
   "files.hotExit": "off",
   "editor.scrollBeyondLastColumn": 0,
   "gitlens.currentLine.scrollable": false,
   "diffEditor.ignoreTrimWhitespace": false,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "files.associations": {
     "*.variables": "less",
     "*.overrides": "less"
@@ -112,32 +90,20 @@
   },
   "editor.accessibilitySupport": "off",
   "window.autoDetectColorScheme": true,
-  "workbench.activityBar.visible": false,
   "livePreview.autoRefreshPreview": "Never",
   "[mdx]": {
     "editor.wordWrap": "on"
   },
-  "errorLens.excludeBySource": [
-    "eslint(@typescript-eslint/ban-types)",
-    "eslint(@typescript-eslint/no-empty-function)",
-    "eslint(@typescript-eslint/no-unused-vars)",
-    "eslint(arrow-parens)",
-    "eslint(no-console)",
-    "eslint(no-empty-pattern)",
-    "eslint(no-empty)",
-    "eslint(semi)",
-    "ts(6133)",
-    "Grammarly"
-  ],
-  "errorLens.exclude": ["^Correct your spelling$", "^Change the spelling$"],
-  "workbench.layoutControl.enabled": false,
-  "mdx.experimentalLanguageServer": true,
   "editor.stickyScroll.enabled": true,
   "editor.cursorBlinking": "phase",
   "editor.gotoLocation.multipleDefinitions": "goto",
   "gitlens.showWhatsNewAfterUpgrades": false,
-  "gitlens.showWelcomeOnInstall": false,
   "gitlens.plusFeatures.enabled": false,
   "github.copilot.editor.enableCodeActions": false,
   "typescript.reportStyleChecksAsWarnings": false,
+  "editor.codeActionsOnSave": {
+
+  },
+  "editor.fontFamily": "Monaco, 'Courier New', monospace",
+  "cloudcode.duetAI.project": "",
 }

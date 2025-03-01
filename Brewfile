@@ -45,7 +45,7 @@ brew "stow"          # Symlink farm manager
 
 # --- Development Tools ---
 brew "act"          # Run your GitHub Actions locally
-brew "asdf"          # Version manager for multiple languages
+brew "mise"          # Version manager for multiple languages
 brew "direnv"        # Environment switcher for directories
 brew "gnupg"  # enable PGP-signing commits.
 brew "make"
@@ -84,6 +84,12 @@ brew "jq"            # JSON processor
 brew "lazydocker"                           # a better docker UI
 brew "tealdeer"      # tldr client - simplified man pages
 brew "tree"          # Display directory tree
+brew "superfile"     # fancy file manager for the terminal
+brew "yt-dlp"     # youtube-dl fork with additional features and fixes
+
+# AI tools
+brew "aichat"
+brew "aider"
 
 if OS.mac?
     # --- macOS Specific Brew Packages ---
@@ -95,24 +101,24 @@ if OS.mac?
     cask "font-hack-nerd-font"
     cask "font-hasklig"
     cask "font-jetbrains-mono-nerd-font"
-    cask "font-symbols-only-nerd-font"   # nerd-only symbols font
+    cask "font-symbols-only-nerd-font"
+    cask "font-sauce-code-pro-nerd-font"
 
     # --- Utilities ---
     cask "appcleaner"    # Uninstall applications completely
     cask "bitwarden"     # Password manager
-    cask "grandperspective" # Graphically shows disk usage within a file system
     cask "github"        # GitHub Desktop
     cask "imageoptim"    # Image optimization tool
     cask "iterm2"        # Terminal emulator
     cask "ghostty"       # Terminal emulator
     cask "karabiner-elements"            # keyboard customizer
     cask "maccy"         # Clipboard manager
-    cask "meld"          # Visual diff and merge tool
     cask "ollama"        # Run large language models locally
     cask "syncalicious" # Backup and synchronise preferences across multiple machines
     cask "the-unarchiver" # Archive extraction utility
     cask "tomatobar"     # Pomodoro timer in menu bar
     cask "utm"           # Virtual machine manager
+    cask "vmware-fusion"               # Virtualization software
 
     # --- Development Tools ---
     cask "android-platform-tools"
@@ -122,7 +128,6 @@ if OS.mac?
 
     # --- Quick Look Plugins ---
     cask "qlcolorcode"    # Syntax highlighting for code in Quick Look
-    cask "qlimagesize"    # Display image dimensions in Quick Look
     cask "qlmarkdown"     # Markdown preview in Quick Look
     cask "qlprettypatch"  # Patch file preview in Quick Look
     cask "qlstephen"      # Plain text preview in Quick Look
@@ -136,10 +141,12 @@ if OS.mac?
 
     # --- Browsers ---
     cask "brave-browser"
-    cask "firefox"
-    cask "orion"    # WebKit based web browser
 
     # --- Productivity/Office ---
     cask "obsidian"      # Note-taking and knowledge management
     cask "zoom"          # Video conferencing
+
+    # --- AI tools ---
+    cask "claude"
+    cask "chatgpt"
 end
