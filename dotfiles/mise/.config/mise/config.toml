@@ -28,3 +28,4 @@ cargo-binstall = 'latest'
 "npm:typescript" = "latest"
 "npm:ts-node" = "latest"
 "npm:nodemon" = "latest"
+"npm:vercel" = "latest"

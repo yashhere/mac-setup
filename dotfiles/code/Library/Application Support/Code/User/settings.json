@@ -1,111 +1,129 @@
 {
-  "workbench.startupEditor": "newUntitledFile",
-  "editor.tabSize": 4,
-  "editor.insertSpaces": true,
-  "editor.wordWrap": "on",
-  "editor.rulers": [100],
-  "workbench.statusBar.visible": true,
-  "editor.minimap.enabled": false,
-  "editor.occurrencesHighlight": "singleFile",
-  "editor.renderLineHighlight": "all",
-  "editor.acceptSuggestionOnCommitCharacter": false,
-  "explorer.confirmDragAndDrop": false,
-  "terminal.integrated.fontFamily": "Hasklig",
-  "terminal.integrated.fontSize": 14,
-  "editor.fontSize": 14,
-  "files.autoSave": "afterDelay",
-  "files.autoSaveDelay": 1000,
-  "editor.inlineSuggest.enabled": true,
-  "editor.fontLigatures": true,
-  "eslint.enable": true,
-  "editor.linkedEditing": false, // This is buggy, use the 'Auto Rename Tag' extension instead.
-  "editor.suggest.localityBonus": true,
-  "editor.unicodeHighlight.allowedCharacters": {
-    "’": true,
-    "‹": true,
-    "›": true,
-    "–": true
-  },
-  "files.insertFinalNewline": true,
-  "files.trimFinalNewlines": true,
-  "github.copilot.enable": {
-    "*": true,
-    "yaml": true,
-    "plaintext": true,
-    "markdown": true
-  },
-  "telemetry.telemetryLevel": "off",
-  "workbench.editor.enablePreview": false,
-  "prettier.singleQuote": true,
-  "prettier.trailingComma": "es5",
-  "prettier.semi": false,
-  "go.useLanguageServer": true,
-  "go.formatTool": "goimports",
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "html.format.enable": true,
-  "css.validate": true,
-  "update.mode": "none",
-  "[yaml]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "gitlens.codeLens.authors.enabled": false,
-  "gitlens.codeLens.recentChange.enabled": false,
-  "[jsonc]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  },
-  "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[css]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "editor.quickSuggestionsDelay": 5,
-  "editor.scrollPredominantAxis": true,
-  "files.hotExit": "off",
-  "editor.scrollBeyondLastColumn": 0,
-  "gitlens.currentLine.scrollable": false,
-  "diffEditor.ignoreTrimWhitespace": false,
-  "files.associations": {
-    "*.variables": "less",
-    "*.overrides": "less"
-  },
-  "extensions.ignoreRecommendations": true,
-  "editor.minimap.maxColumn": 100,
-  "prettier.printWidth": 100,
-  "security.workspace.trust.untrustedFiles": "open",
-  "editor.guides.bracketPairs": true,
-  "editor.hover.delay": 1000,
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "editor.accessibilitySupport": "off",
-  "window.autoDetectColorScheme": true,
-  "livePreview.autoRefreshPreview": "Never",
-  "[mdx]": {
-    "editor.wordWrap": "on"
-  },
-  "editor.stickyScroll.enabled": true,
-  "editor.cursorBlinking": "phase",
-  "editor.gotoLocation.multipleDefinitions": "goto",
-  "gitlens.showWhatsNewAfterUpgrades": false,
-  "gitlens.plusFeatures.enabled": false,
-  "github.copilot.editor.enableCodeActions": false,
-  "typescript.reportStyleChecksAsWarnings": false,
-  "editor.codeActionsOnSave": {
-
-  },
-  "editor.fontFamily": "Hasklig, 'Courier New', monospace",
-  "terminal.external.osxExec": "Ghostty.app",
-  "geminicodeassist.enableTelemetry": false,
-  "cloudcode.duetAI.project": "",
+    "workbench.startupEditor": "newUntitledFile",
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.wordWrap": "on",
+    "editor.rulers": [
+        100
+    ],
+    "workbench.statusBar.visible": true,
+    "editor.minimap.enabled": false,
+    "editor.occurrencesHighlight": "singleFile",
+    "editor.renderLineHighlight": "all",
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "explorer.confirmDragAndDrop": false,
+    "terminal.integrated.fontFamily": "Hasklig",
+    "terminal.integrated.fontSize": 14,
+    "editor.fontSize": 14,
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
+    "editor.inlineSuggest.enabled": true,
+    "editor.fontLigatures": true,
+    "eslint.enable": true,
+    "editor.linkedEditing": false, // This is buggy, use the 'Auto Rename Tag' extension instead.
+    "editor.suggest.localityBonus": true,
+    "editor.unicodeHighlight.allowedCharacters": {
+        "’": true,
+        "‹": true,
+        "›": true,
+        "–": true
+    },
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "github.copilot.enable": {
+        "*": true,
+        "yaml": true,
+        "plaintext": true,
+        "markdown": true
+    },
+    "telemetry.telemetryLevel": "off",
+    "workbench.editor.enablePreview": false,
+    "prettier.singleQuote": true,
+    "prettier.trailingComma": "es5",
+    "prettier.semi": false,
+    "go.useLanguageServer": true,
+    "go.formatTool": "goimports",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "html.format.enable": true,
+    "css.validate": true,
+    "update.mode": "none",
+    "[yaml]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.tabSize": 2
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.tabSize": 2
+    },
+    "gitlens.codeLens.authors.enabled": false,
+    "gitlens.codeLens.recentChange.enabled": false,
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[css]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSaveMode": "file",
+        "editor.formatOnSave": true,
+        "editor.tabSize": 2
+    },
+    "editor.quickSuggestionsDelay": 5,
+    "editor.scrollPredominantAxis": true,
+    "files.hotExit": "off",
+    "editor.scrollBeyondLastColumn": 0,
+    "gitlens.currentLine.scrollable": false,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "files.associations": {
+        "*.variables": "less",
+        "*.overrides": "less"
+    },
+    "extensions.ignoreRecommendations": true,
+    "editor.minimap.maxColumn": 100,
+    "prettier.printWidth": 100,
+    "security.workspace.trust.untrustedFiles": "open",
+    "editor.guides.bracketPairs": true,
+    "editor.hover.delay": 1000,
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.tabSize": 2
+    },
+    "editor.accessibilitySupport": "off",
+    "window.autoDetectColorScheme": true,
+    "livePreview.autoRefreshPreview": "Never",
+    "[mdx]": {
+        "editor.wordWrap": "on"
+    },
+    "editor.stickyScroll.enabled": true,
+    "editor.cursorBlinking": "phase",
+    "editor.gotoLocation.multipleDefinitions": "goto",
+    "gitlens.showWhatsNewAfterUpgrades": false,
+    "gitlens.plusFeatures.enabled": false,
+    "github.copilot.editor.enableCodeActions": false,
+    "typescript.reportStyleChecksAsWarnings": false,
+    "editor.codeActionsOnSave": {},
+    "editor.fontFamily": "'JetBrainsMono Nerd Font', 'Hasklig', 'Courier New', monospace",
+    "terminal.external.osxExec": "Ghostty.app",
+    "geminicodeassist.enableTelemetry": false,
+    "geminicodeassist.project": "",
+    "remote.SSH.connectTimeout": 150,
+    "remote.SSH.experimental.chat": false,
+    "remote.SSH.experimental.enhancedSessionLogs": false,
+    "remote.SSH.localServerDownload": "always",
+    "remote.SSH.remotePlatform": {
+        "*": "linux",
+        "barium": "linux"
+    },
+    "remote.SSH.useLocalServer": false,
+    "editor.detectIndentation": false,
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
 }

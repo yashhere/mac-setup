@@ -48,3 +48,6 @@ function yt
     set video_link "$argv[1]"
     fabric -y "$video_link" --transcript
 end
+
+# Added by Windsurf
+fish_add_path /Users/yash/.codeium/windsurf/bin

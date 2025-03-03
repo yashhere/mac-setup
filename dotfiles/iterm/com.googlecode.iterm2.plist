@@ -5324,7 +5324,7 @@
 			<key>Send Code When Idle</key>
 			<false/>
 			<key>Set Local Environment Vars</key>
-			<true/>
+			<integer>3</integer>
 			<key>Shortcut</key>
 			<string></string>
 			<key>Show Status Bar</key>

@@ -121,6 +121,7 @@ if OS.mac?
     cask "tomatobar"     # Pomodoro timer in menu bar
     cask "utm"           # Virtual machine manager
     cask "vmware-fusion"               # Virtualization software
+    cask "ente-auth"     # Ente authentication app
 
     # --- Development Tools ---
     cask "android-file-transfer"    # Android File Transfer
@@ -128,6 +129,8 @@ if OS.mac?
     cask "jetbrains-toolbox" # Manage JetBrains IDEs
     cask "postman"       # API platform
     cask "visual-studio-code" # Code editor
+    cask "cursor"
+    cask "windsurf"
 
     # --- Quick Look Plugins ---
     cask "qlcolorcode"    # Syntax highlighting for code in Quick Look
