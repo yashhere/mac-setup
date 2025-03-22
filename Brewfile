@@ -83,6 +83,7 @@ brew "entr"          # Run arbitrary commands when files change
 brew "ffmpeg"        # Multimedia framework
 brew "glow" # Render markdown on the CLI
 brew "jq"            # JSON processor
+brew "yq"
 brew "lazydocker"                           # a better docker UI
 brew "tealdeer"      # tldr client - simplified man pages
 brew "tree"          # Display directory tree
@@ -128,6 +129,7 @@ if OS.mac?
     cask "ente-auth"     # Ente authentication app
     cask "google-drive"
     cask "balenaetcher"
+    cask "camo-studio"
 
     # --- Development Tools ---
     cask "android-file-transfer"    # Android File Transfer
@@ -138,6 +140,7 @@ if OS.mac?
     cask "cursor"
     cask "windsurf"
     cask "beekeeper-studio"
+    cask "jan"
 
     # --- Quick Look Plugins ---
     cask "qlcolorcode"    # Syntax highlighting for code in Quick Look
