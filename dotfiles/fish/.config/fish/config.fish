@@ -28,6 +28,7 @@ set -gx XDG_DATA_HOME "$HOME/.local/share"
 set -gx XDG_CACHE_HOME "$HOME/.cache"
 set -gx XDG_STATE_HOME "$HOME/.local/state"
 set -gx DOTFILES "$HOME/dotfiles"
+set -gx HOMEBREW_NO_AUTO_UPDATE true
 
 # Load Vscode shell integration
 string match -q "$TERM_PROGRAM" vscode

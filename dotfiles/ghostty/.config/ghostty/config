@@ -1,5 +1,5 @@
 # Theme settings
-theme = dark:catppuccin-macchiato,light:catppuccin-latte
+theme = catppuccin-latte
 bold-is-bright = true
 
 shell-integration-features = no-cursor,sudo

@@ -27,7 +27,7 @@ if status --is-interactive
     alias chown="chown --preserve-root"
     alias chmod="chmod --preserve-root"
     alias chgrp="chgrp --preserve-root"
-    alias ps="ps aux k%cpu"
+    alias ps="ps aux"
     alias q="exit"
     alias Q="exit"
     alias x="exit"

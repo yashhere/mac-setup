@@ -9,6 +9,7 @@ tap "homebrew/services"       # For managing services via brew services
 tap "guumaster/tap"
 tap "jozefcipa/novus"
 tap "nektos/tap"
+tap "buo/cask-upgrade"
 
 # Brew Packages: Command-line tools and utilities installed via `brew install`.
 
@@ -87,6 +88,9 @@ brew "tealdeer"      # tldr client - simplified man pages
 brew "tree"          # Display directory tree
 brew "superfile"     # fancy file manager for the terminal
 brew "yt-dlp"     # youtube-dl fork with additional features and fixes
+brew "mkcert"
+brew "nss"
+brew "tokei"
 
 # AI tools
 brew "aichat"
@@ -122,6 +126,8 @@ if OS.mac?
     cask "utm"           # Virtual machine manager
     cask "vmware-fusion"               # Virtualization software
     cask "ente-auth"     # Ente authentication app
+    cask "google-drive"
+    cask "balenaetcher"
 
     # --- Development Tools ---
     cask "android-file-transfer"    # Android File Transfer
@@ -131,6 +137,7 @@ if OS.mac?
     cask "visual-studio-code" # Code editor
     cask "cursor"
     cask "windsurf"
+    cask "beekeeper-studio"
 
     # --- Quick Look Plugins ---
     cask "qlcolorcode"    # Syntax highlighting for code in Quick Look
@@ -155,4 +162,7 @@ if OS.mac?
     # --- AI tools ---
     cask "claude"
     cask "chatgpt"
+
+    mas "Bear", id: 1091189122
+    mas "Agenda", id: 1287445660
 end
