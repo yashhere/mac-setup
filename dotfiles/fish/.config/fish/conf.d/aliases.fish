@@ -41,5 +41,4 @@ if status --is-interactive
     alias pbpaste="xclip -selection clipboard -o"
 
     alias aider="aider --env-file $HOME/.env"
-    alias fix-git-author "git filter-repo --name-callback 'return name.replace(b\"OLD_NAME\", b\"NEW_NAME\")' --email-callback 'return email.replace(b\"OLD_EMAIL\", b\"NEW_EMAIL\")'"
 end

@@ -1,8 +1,7 @@
-.aider.*
-!.aider.conf.yml
-.env
+.aider*
 **/aider/.aider/caches
+!dotfiles/aider/.aider.conf.yml
+.env
 *.log
 *.env
-.aider*
 **/.config/tmux/plugins

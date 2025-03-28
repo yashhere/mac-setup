@@ -95,7 +95,6 @@ brew "tokei"
 
 # AI tools
 brew "aichat"
-brew "aider"
 
 if OS.mac?
     # --- macOS Specific Brew Packages ---

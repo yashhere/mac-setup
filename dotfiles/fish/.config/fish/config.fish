@@ -52,3 +52,6 @@ end
 
 # Added by Windsurf
 fish_add_path /Users/yash/.codeium/windsurf/bin
+
+# uv
+fish_add_path "/Users/yash/.local/share/../bin"

@@ -29,3 +29,4 @@ cargo-binstall = 'latest'
 "npm:ts-node" = "latest"
 "npm:nodemon" = "latest"
 "npm:vercel" = "latest"
+"npm:vite" = "latest"
