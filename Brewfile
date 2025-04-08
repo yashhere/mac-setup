@@ -69,6 +69,7 @@ brew "jozefcipa/novus/novus"    # A local HTTPS proxy for a delightful developer
 # --- System Tools ---
 brew "imagemagick"   # Image manipulation tools
 brew "mas"                      # Mac App Store command-line interface
+brew "pandoc"
 
 # --- Search Tools ---
 brew "ack"           # Grep-like text finder
@@ -108,6 +109,7 @@ if OS.mac?
     cask "font-jetbrains-mono-nerd-font"
     cask "font-symbols-only-nerd-font"
     cask "font-sauce-code-pro-nerd-font"
+    cask "font-source-code-pro"
 
     # --- Utilities ---
     cask "stats"         # System monitoring in your menu bar
@@ -140,6 +142,7 @@ if OS.mac?
     cask "windsurf"
     cask "beekeeper-studio"
     cask "jan"
+    cask "httpie"
 
     # --- Quick Look Plugins ---
     cask "qlcolorcode"    # Syntax highlighting for code in Quick Look

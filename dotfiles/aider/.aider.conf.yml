@@ -18,7 +18,8 @@
 # Main model:
 
 ## Specify the model to use for the main chat
-#model: xxx
+model: gemini/gemini-2.5-pro-exp-03-25
+#model: deepseek/deepseek-reasoner
 
 ########################
 # API Keys and settings:
@@ -96,16 +97,16 @@
 #edit-format: xxx
 
 ## Use architect edit format for the main chat
-#architect: false
+architect: true
 
 ## Enable/disable automatic acceptance of architect changes (default: True)
-#auto-accept-architect: true
+auto-accept-architect: false
 
 ## Specify the model to use for commit messages and chat history summarization (default depends on --model)
 #weak-model: xxx
 
 ## Specify the model to use for editor tasks (default depends on --model)
-#editor-model: xxx
+#editor-model: deepseek/deepseek-coder
 
 ## Specify the edit format for the editor model (default: depends on editor model)
 #editor-edit-format: xxx
@@ -123,7 +124,7 @@
 # Cache settings:
 
 ## Enable caching of prompts (default: False)
-#cache-prompts: false
+cache-prompts: true
 
 ## Number of times to ping at 5min intervals to keep prompt cache warm (default: 0)
 #cache-keepalive-pings: false
@@ -153,7 +154,7 @@
 #restore-chat-history: false
 
 ## Log the conversation with the LLM to this file (for example, .aider.llm.history)
-#llm-history-file: xxx
+llm-history-file: .aider.llm.history
 
 ##################
 # Output settings:
@@ -162,28 +163,28 @@
 #dark-mode: false
 
 ## Use colors suitable for a light terminal background (default: False)
-#light-mode: false
+light-mode: true
 
 ## Enable/disable pretty, colorized output (default: True)
-#pretty: true
+pretty: true
 
 ## Enable/disable streaming responses (default: True)
-#stream: true
+stream: true
 
 ## Set the color for user input (default: #00cc00)
-#user-input-color: #00cc00
+user-input-color: #008800   # darker green
 
 ## Set the color for tool output (default: None)
 #tool-output-color: "xxx"
 
 ## Set the color for tool error messages (default: #FF2222)
-#tool-error-color: #FF2222
+tool-error-color: #CC0000   # darker red
 
 ## Set the color for tool warning messages (default: #FFA500)
-#tool-warning-color: #FFA500
+tool-warning-color: #FFA500
 
 ## Set the color for assistant output (default: #0088ff)
-#assistant-output-color: #0088ff
+assistant-output-color: #0055CC   # darker blue
 
 ## Set the color for the completion menu (default: terminal's default text color)
 #completion-menu-color: "xxx"
@@ -198,7 +199,7 @@
 #completion-menu-current-bg-color: "xxx"
 
 ## Set the markdown code theme (default: default, other options include monokai, solarized-dark, solarized-light, or a Pygments builtin style, see https://pygments.org/styles for available themes)
-#code-theme: default
+code-theme: github
 
 ## Show diffs when committing changes (default: False)
 #show-diffs: false
@@ -236,7 +237,7 @@ attribute-committer: false
 #attribute-commit-message-committer: false
 
 ## Enable/disable git pre-commit hooks with --no-verify (default: False)
-#git-commit-verify: false
+git-commit-verify: false
 
 ## Commit all pending changes with a suitable commit message, then exit
 #commit: false
@@ -283,13 +284,13 @@ attribute-committer: false
 # Analytics:
 
 ## Enable/disable analytics for current session (default: random)
-#analytics: xxx
+analytics: false
 
 ## Specify a file to log analytics events
 #analytics-log: xxx
 
 ## Permanently disable analytics
-#analytics-disable: false
+analytics-disable: true
 
 ############
 # Upgrading:
@@ -301,7 +302,7 @@ attribute-committer: false
 #check-update: true
 
 ## Show release notes on first run of new version (default: None, ask user)
-#show-release-notes: xxx
+show-release-notes: false
 
 ## Install the latest version from the main branch
 #install-main-branch: false
@@ -366,7 +367,7 @@ attribute-committer: false
 #  - zzz
 
 ## specify a read-only file (can be used multiple times)
-#read: xxx
+read: CONVENTIONS.md
 ## Specify multiple values like this:
 #read:
 #  - xxx

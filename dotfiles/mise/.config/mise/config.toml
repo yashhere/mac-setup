@@ -30,3 +30,4 @@ cargo-binstall = 'latest'
 "npm:nodemon" = "latest"
 "npm:vercel" = "latest"
 "npm:vite" = "latest"
+"npm:concurrently" = "latest"

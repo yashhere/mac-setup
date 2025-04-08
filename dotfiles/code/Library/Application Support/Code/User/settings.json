@@ -20,7 +20,7 @@
   "editor.inlineSuggest.enabled": true,
   "editor.fontLigatures": true,
   "eslint.enable": true,
-  "editor.linkedEditing": false, // This is buggy, use the 'Auto Rename Tag' extension instead.
+  "editor.linkedEditing": true, // This is buggy, use the 'Auto Rename Tag' extension instead.
   "editor.suggest.localityBonus": true,
   "editor.unicodeHighlight.allowedCharacters": {
     "’": true,
@@ -65,7 +65,8 @@
     "editor.defaultFormatter": "vscode.json-language-features"
   },
   "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
   },
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -90,7 +91,8 @@
   "editor.guides.bracketPairs": true,
   "editor.hover.delay": 1000,
   "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
   },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -136,8 +138,9 @@
   },
   "[go]": {
     "editor.defaultFormatter": "golang.go"
-},
-"[fish]": {
+  },
+  "[fish]": {
     "editor.defaultFormatter": "bmalehorn.vscode-fish"
-},
+  },
+  "git.openRepositoryInParentFolders": "never",
 }
