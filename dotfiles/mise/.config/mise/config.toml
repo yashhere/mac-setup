@@ -2,6 +2,7 @@
 [settings]
 legacy_version_file = true  # For compatibility with .node-version, .python-version etc.
 jobs = 4                    # Number of jobs to run in parallel
+idiomatic_version_file_enable_tools = ["node"]
 
 [settings.npm]
 bun = true
@@ -15,7 +16,7 @@ uvx = true
 # You can add tool-specific configurations
 [tools]
 node = "lts"
-python = ['3.13']
+python = ['3.13', '3.12', '3.11']
 rust = "stable"
 go = "latest"
 bun = '1.2.4'
@@ -31,3 +32,4 @@ cargo-binstall = 'latest'
 "npm:vercel" = "latest"
 "npm:vite" = "latest"
 "npm:concurrently" = "latest"
+"npm:pnpm" = "latest"

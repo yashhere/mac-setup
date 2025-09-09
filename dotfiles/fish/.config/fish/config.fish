@@ -11,7 +11,6 @@ if not functions -q fisher && status is-interactive
     curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher update
 end
 
-
 if test (arch) = arm64
     eval (/opt/homebrew/bin/brew shellenv)
 else
@@ -50,8 +49,17 @@ function yt
     fabric -y "$video_link" --transcript
 end
 
-# Added by Windsurf
-fish_add_path /Users/yash/.codeium/windsurf/bin
-
 # uv
 fish_add_path "/Users/yash/.local/share/../bin"
+
+set work_config ~/.config/fish/config.work.fish
+test -r $work_config; and source $work_config
+
+# uv
+fish_add_path "/Users/yagarwal/.local/share/../bin"
+
+# Added by LM Studio CLI (lms)
+set -gx PATH $PATH /Users/yagarwal/.lmstudio/bin
+# End of LM Studio CLI section
+
+direnv hook fish | source

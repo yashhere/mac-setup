@@ -3,10 +3,10 @@
 BREWFILE="$SCRIPT_DIR/Brewfile"
 
 APP_STORE_PACKAGES=(
-    "1091189122::Bear"
-    "409183694::Keynote"
-    "409203825::Numbers"
-    "409201541::Pages"
+    # "1091189122::Bear"
+    # "409183694::Keynote"
+    # "409203825::Numbers"
+    # "409201541::Pages"
 )
 
 install_xcode_cli_tools() {

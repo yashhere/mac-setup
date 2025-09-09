@@ -1,5 +1,3 @@
-# vim:ft=gitconfig
-
 [include]
     # A local gitconfig, outside of version control.
     # If the file doesn't exist it is silently ignored
@@ -157,6 +155,7 @@ statusHints = false # Disable status hints
 
 [rerere]
 enabled = true # Enable reuse recorded resolution
+
 [user]
 name = Yash Agarwal
 email = "13733968+yashhere@users.noreply.github.com"
@@ -166,6 +165,7 @@ submoduleSummary = false
 
 [init]
 defaultBranch = main
+	templatedir = /Users/yagarwal/.git-templates
 
 [fetch]
 prune = true
@@ -175,3 +175,6 @@ useHttpPath = true
 
 [url "git@github.com:"]
 insteadOf = https://github.com/
+
+[include]
+    path = ~/.gitconfig-work

@@ -20,7 +20,7 @@
     "editor.inlineSuggest.enabled": true,
     "editor.fontLigatures": true,
     "eslint.enable": true,
-    "editor.linkedEditing": true, // This is buggy, use the 'Auto Rename Tag' extension instead.
+    "editor.linkedEditing": false, // This is buggy, use the 'Auto Rename Tag' extension instead.
     "editor.suggest.localityBonus": true,
     "editor.unicodeHighlight.allowedCharacters": {
         "’": true,
@@ -56,7 +56,7 @@
         "editor.tabSize": 2
     },
     "[json]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.defaultFormatter": "vscode.json-language-features",
         "editor.tabSize": 2
     },
     "gitlens.codeLens.authors.enabled": false,
@@ -65,8 +65,7 @@
         "editor.defaultFormatter": "vscode.json-language-features"
     },
     "[html]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.tabSize": 2
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[css]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -91,8 +90,7 @@
     "editor.guides.bracketPairs": true,
     "editor.hover.delay": 1000,
     "[typescriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.tabSize": 2
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[typescript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -122,29 +120,24 @@
     "remote.SSH.localServerDownload": "always",
     "remote.SSH.remotePlatform": {
         "*": "linux",
-        "barium": "linux"
+        "barium": "linux",
+        "dev-vm": "linux",
+        "macmini": "macOS",
+        "rpi": "linux"
     },
     "remote.SSH.useLocalServer": false,
     "editor.detectIndentation": false,
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "diffEditor.codeLens": true,
-    "[shellscript]": {
-        "editor.defaultFormatter": "shakram02.bash-beautify"
-    },
-    "makefile.configureOnOpen": false,
-    "[markdown]": {
-        "editor.formatOnSaveMode": "modifications"
-    },
-    "[go]": {
-        "editor.defaultFormatter": "golang.go"
-    },
-    "[fish]": {
-        "editor.defaultFormatter": "bmalehorn.vscode-fish"
-    },
-    "git.openRepositoryInParentFolders": "never",
-    "workbench.preferredLightColorTheme": "GitHub Light",
-    "[python]": {
-        "editor.defaultFormatter": "ms-python.black-formatter"
+    "database-client.autoSync": true,
+    "window.newWindowProfile": "Work",
+    "go.gopath": "",
+    "docker.extension.experimental.composeCompletions": true,
+    "chat.agent.enabled": true,
+    "docker.extension.enableComposeLanguageServer": false,
+    "go.toolsManagement.autoUpdate": true,
+    "chat.agent.maxRequests": 200,
+    "[toml]": {
+        "editor.defaultFormatter": "tamasfe.even-better-toml"
     },
 }

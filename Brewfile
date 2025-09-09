@@ -4,11 +4,7 @@
 
 # Taps: Add external repositories for formulae and casks.
 # These extend Homebrew's package availability beyond the core packages.
-tap "homebrew/bundle"         # Allows managing Brewfiles
-tap "homebrew/services"       # For managing services via brew services
 tap "guumaster/tap"
-tap "jozefcipa/novus"
-tap "nektos/tap"
 tap "buo/cask-upgrade"
 
 # Brew Packages: Command-line tools and utilities installed via `brew install`.
@@ -45,7 +41,6 @@ brew "lazygit"                              # a better git UI
 brew "stow"          # Symlink farm manager
 
 # --- Development Tools ---
-brew "act"          # Run your GitHub Actions locally
 brew "mise"          # Version manager for multiple languages
 brew "direnv"        # Environment switcher for directories
 brew "gnupg"        # enable PGP-signing commits.
@@ -64,11 +59,9 @@ brew "ssh-copy-id"
 brew "wakeonlan"      # Wake-on-LAN command
 brew "wget"
 brew "guumaster/tap/hostctl"    # manage /etc/hosts like a pro
-brew "jozefcipa/novus/novus"    # A local HTTPS proxy for a delightful developer experience.
 
 # --- System Tools ---
 brew "imagemagick"   # Image manipulation tools
-brew "mas"                      # Mac App Store command-line interface
 brew "pandoc"
 
 # --- Search Tools ---
@@ -95,7 +88,6 @@ brew "nss"
 brew "tokei"
 
 # AI tools
-brew "aichat"
 
 if OS.mac?
     # --- macOS Specific Brew Packages ---
@@ -113,35 +105,18 @@ if OS.mac?
 
     # --- Utilities ---
     cask "stats"         # System monitoring in your menu bar
-    cask "appcleaner"    # Uninstall applications completely
-    cask "bitwarden"     # Password manager
-    cask "github"        # GitHub Desktop
     cask "imageoptim"    # Image optimization tool
     cask "iterm2"        # Terminal emulator
     cask "ghostty"       # Terminal emulator
-    cask "karabiner-elements"            # keyboard customizer
     cask "maccy"         # Clipboard manager
     cask "ollama"        # Run large language models locally
-    cask "syncalicious" # Backup and synchronise preferences across multiple machines
     cask "the-unarchiver" # Archive extraction utility
-    cask "tomatobar"     # Pomodoro timer in menu bar
     cask "utm"           # Virtual machine manager
     cask "vmware-fusion"               # Virtualization software
-    cask "ente-auth"     # Ente authentication app
-    cask "google-drive"
-    cask "balenaetcher"
-    cask "camo-studio"
 
     # --- Development Tools ---
-    cask "android-file-transfer"    # Android File Transfer
-    cask "android-platform-tools"
-    cask "jetbrains-toolbox" # Manage JetBrains IDEs
     cask "postman"       # API platform
     cask "visual-studio-code" # Code editor
-    cask "cursor"
-    cask "windsurf"
-    cask "beekeeper-studio"
-    cask "jan"
     cask "httpie"
 
     # --- Quick Look Plugins ---
@@ -162,12 +137,4 @@ if OS.mac?
 
     # --- Productivity/Office ---
     cask "obsidian"      # Note-taking and knowledge management
-    cask "zoom"          # Video conferencing
-
-    # --- AI tools ---
-    cask "claude"
-    cask "chatgpt"
-
-    mas "Bear", id: 1091189122
-    mas "Agenda", id: 1287445660
 end
