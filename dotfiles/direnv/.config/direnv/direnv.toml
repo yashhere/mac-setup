@@ -1,2 +1,8 @@
 [global]
-log_filter="^$"
+# Suppress log noise
+load_dotenv = true
+strict_env = false
+
+[whitelist]
+# Directories where direnv is always allowed
+prefix = ["~/projects", "~/work", "~/code"]

@@ -13,13 +13,10 @@ blocks:
   - permission
   - user
   - group
-  # - context
+  - git
   - size
   - date
   - name
-  # - inode
-  # - links
-  # - git
 
 # == Color ==
 # This has various color options. (Will be expanded in the future.)

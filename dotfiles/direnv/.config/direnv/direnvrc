@@ -1,0 +1,103 @@
+# direnv stdlib extensions
+# These provide convenient layouts for different project types
+
+# Layout: Python with venv
+# Usage in .envrc: layout python
+layout_python() {
+    local python=${1:-python3}
+    local venv=.venv
+
+    if [[ ! -d "$venv" ]]; then
+        log_status "Creating python venv in $venv"
+        $python -m venv "$venv"
+    fi
+
+    source "$venv/bin/activate"
+
+    # Install requirements if they exist
+    if [[ -f requirements.txt ]]; then
+        if [[ requirements.txt -nt "$venv/.requirements.installed" ]]; then
+            log_status "Installing requirements.txt"
+            pip install -q -r requirements.txt
+            touch "$venv/.requirements.installed"
+        fi
+    fi
+}
+
+# Layout: Python with uv (faster)
+# Usage in .envrc: layout uv
+layout_uv() {
+    local venv=.venv
+
+    if [[ ! -d "$venv" ]]; then
+        log_status "Creating python venv with uv in $venv"
+        uv venv "$venv"
+    fi
+
+    source "$venv/bin/activate"
+
+    # Sync dependencies if pyproject.toml exists
+    if [[ -f pyproject.toml ]]; then
+        log_status "Syncing dependencies with uv"
+        uv sync --quiet
+    fi
+}
+
+# Layout: Node.js with automatic nvm/mise
+# Usage in .envrc: layout node
+layout_node() {
+    # Use mise if available
+    if has mise; then
+        eval "$(mise activate bash)"
+    fi
+
+    # Add node_modules/.bin to PATH
+    PATH_add node_modules/.bin
+
+    # Auto-install if package.json exists but node_modules doesn't
+    if [[ -f package.json && ! -d node_modules ]]; then
+        if [[ -f pnpm-lock.yaml ]]; then
+            log_status "Installing dependencies with pnpm"
+            pnpm install
+        elif [[ -f yarn.lock ]]; then
+            log_status "Installing dependencies with yarn"
+            yarn install
+        elif [[ -f bun.lockb ]]; then
+            log_status "Installing dependencies with bun"
+            bun install
+        else
+            log_status "Installing dependencies with npm"
+            npm install
+        fi
+    fi
+}
+
+# Layout: Go project
+# Usage in .envrc: layout go
+layout_go() {
+    export GOPATH="$PWD/.go"
+    PATH_add "$GOPATH/bin"
+    PATH_add bin
+}
+
+# Layout: Rust project
+# Usage in .envrc: layout rust
+layout_rust() {
+    PATH_add target/debug
+    PATH_add target/release
+}
+
+# Use a specific mise tool version
+# Usage in .envrc: use mise node@20
+use_mise() {
+    direnv_load mise direnv exec
+}
+
+# Load .env file if it exists (with export)
+# Usage in .envrc: dotenv_if_exists
+dotenv_if_exists() {
+    local envfile="${1:-.env}"
+    if [[ -f "$envfile" ]]; then
+        dotenv "$envfile"
+    fi
+}
