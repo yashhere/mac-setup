@@ -45,8 +45,33 @@ configure_tmux() {
     fi
 }
 
+configure_bat() {
+    if command_exists bat; then
+        local BAT_THEMES_DIR="${HOME}/.config/bat/themes"
+        local CATPPUCCIN_BASE_URL="https://raw.githubusercontent.com/catppuccin/bat/main/themes"
+
+        if [ ! -f "${BAT_THEMES_DIR}/Catppuccin Latte.tmTheme" ]; then
+            log_info "Installing Catppuccin themes for bat/delta..."
+            mkdir -p "${BAT_THEMES_DIR}"
+
+            curl -sL -o "${BAT_THEMES_DIR}/Catppuccin Latte.tmTheme" "${CATPPUCCIN_BASE_URL}/Catppuccin%20Latte.tmTheme"
+            curl -sL -o "${BAT_THEMES_DIR}/Catppuccin Frappe.tmTheme" "${CATPPUCCIN_BASE_URL}/Catppuccin%20Frappe.tmTheme"
+            curl -sL -o "${BAT_THEMES_DIR}/Catppuccin Macchiato.tmTheme" "${CATPPUCCIN_BASE_URL}/Catppuccin%20Macchiato.tmTheme"
+            curl -sL -o "${BAT_THEMES_DIR}/Catppuccin Mocha.tmTheme" "${CATPPUCCIN_BASE_URL}/Catppuccin%20Mocha.tmTheme"
+
+            # Rebuild bat cache to recognize new themes
+            bat cache --build
+
+            log_success "Catppuccin themes installed for bat/delta"
+        else
+            log_info "Catppuccin themes already installed for bat"
+        fi
+    fi
+}
+
 setup_configuration() {
     setup_brew_packages
     configure_iterm
     configure_tmux
+    configure_bat
 }

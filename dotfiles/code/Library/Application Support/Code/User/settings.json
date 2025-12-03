@@ -140,4 +140,5 @@
     "[toml]": {
         "editor.defaultFormatter": "tamasfe.even-better-toml"
     },
+    "docker.extension.dockerEngineAvailabilityPrompt": false,
 }

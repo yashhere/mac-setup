@@ -15,12 +15,12 @@ uvx = true
 
 # You can add tool-specific configurations
 [tools]
-node = "lts"
-python = ['3.13', '3.12', '3.11']
+node = "25"
+python = ['latest', '3.13', '3.12', '3.11']
 rust = "stable"
 go = "latest"
-bun = '1.2.4'
-ruby = '3.4.2'
+bun = 'latest'
+ruby = 'latest'
 cargo-binstall = 'latest'
 
 # npm (there is not .default-npm-packages)
@@ -28,8 +28,8 @@ cargo-binstall = 'latest'
 "npm:prettier" = "latest"
 "npm:typescript" = "latest"
 "npm:ts-node" = "latest"
-"npm:nodemon" = "latest"
-"npm:vercel" = "latest"
-"npm:vite" = "latest"
 "npm:concurrently" = "latest"
 "npm:pnpm" = "latest"
+"npm:@github/copilot" = "latest"
+"npm:@mermaid-js/mermaid-cli" = "latest"
+

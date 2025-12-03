@@ -81,24 +81,36 @@ default = current # Default push behavior to current branch
 
 [core]
 editor = vim                       # Set default editor to vim
-pager = less -x4                   # Use less as pager with tab stop at 4
+pager = delta                      # Use delta for beautiful diffs
 excludesfile = ~/.gitignore_global # Global gitignore file
 ignorecase = false                 # Case sensitive filenames
 trustctime = false                 # Make `git rebase` safer on macOS, see: http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/
 untrackedCache = true              # Speed up commands involving untracked files (git status), see: https://git-scm.com/docs/git-update-index#_untracked_cache
 
+[interactive]
+diffFilter = delta --color-only
+
+[delta]
+navigate = true                    # Use n/N to jump between diff sections
+side-by-side = false               # Set to true for side-by-side view
+line-numbers = true                # Show line numbers
+syntax-theme = "Catppuccin Latte"  # Requires: ./setup.sh --module configuration
+hyperlinks = true                  # Enable hyperlinks to files
+
 [merge]
-conflictstyle = diff3 # Use diff3 style for merge conflicts
-tool = meld           # Use meld as merge tool
-stat = true           # Show diffstat after merges
-log = true            # Include summaries of merged commits in merge commit messages
+conflictstyle = zdiff3 # Use zdiff3 style for better merge conflicts (requires git 2.35+)
+tool = meld            # Use meld as merge tool
+stat = true            # Show diffstat after merges
+log = true             # Include summaries of merged commits in merge commit messages
 
 [credential]
 helper = manager # Use git credential manager
 
 [diff]
-mnemonicprefix = true # Show mnemonic prefixes in diff output
-renames = copies      # Detect copies as renames
+mnemonicprefix = true  # Show mnemonic prefixes in diff output
+renames = copies       # Detect copies as renames
+colorMoved = default   # Highlight moved lines in diffs
+algorithm = histogram  # Use histogram diff algorithm for better diffs
 
 [branch]
 autosetuprebase = always # Default rebase behavior when creating new branches

@@ -33,33 +33,23 @@ set -gx HOMEBREW_NO_AUTO_UPDATE true
 string match -q "$TERM_PROGRAM" vscode
 and . (code --locate-shell-integration-path fish)
 
-# Fabric
-# Loop through all files in the ~/.config/fabric/patterns directory
-for pattern_file in $HOME/.config/fabric/patterns/*
-    # Get the base name of the file (i.e., remove the directory path)
-    set pattern_name (basename "$pattern_file")
-
-    # Create an alias in the form: alias pattern_name="fabric --pattern pattern_name"
-    alias $pattern_name="fabric --pattern $pattern_name"
-end
-
-# Define the yt function
-function yt
-    set video_link "$argv[1]"
-    fabric -y "$video_link" --transcript
-end
-
-# uv
-fish_add_path "/Users/yash/.local/share/../bin"
-
 set work_config ~/.config/fish/config.work.fish
 test -r $work_config; and source $work_config
 
 # uv
-fish_add_path "/Users/yagarwal/.local/share/../bin"
+fish_add_path "$HOME/.local/bin"
 
-# Added by LM Studio CLI (lms)
-set -gx PATH $PATH /Users/yagarwal/.lmstudio/bin
-# End of LM Studio CLI section
+# LM Studio CLI
+fish_add_path /Users/yagarwal/.lmstudio/bin
 
 direnv hook fish | source
+
+# Initialize zoxide as cd replacement (smarter cd)
+if type -q zoxide
+    zoxide init fish --cmd cd | source
+end
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/opt/homebrew/share/google-cloud-sdk/path.fish.inc' ]
+    . '/opt/homebrew/share/google-cloud-sdk/path.fish.inc'
+end

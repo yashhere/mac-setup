@@ -4,7 +4,7 @@
 
 function __ssh_badge
     if test -n "$SSH_CLIENT$SSH2_CLIENT$SSH_TTY"
-        set_color -b 9370DB -o black  # Lighter purple background, black text
+        set_color -b 9370DB -o black # Lighter purple background, black text
         echo -n " "(string upper (string sub -s 1 -l 1 (hostname -s)))" "
         set_color normal
     end
@@ -12,10 +12,10 @@ end
 
 function __ssh_host
     if test -n "$SSH_CLIENT$SSH2_CLIENT$SSH_TTY"
-        set_color 444  # Darker gray for better contrast
+        set_color 444 # Darker gray for better contrast
         echo -n $USER@
         set_color normal
-        set_color -o 8B008B  # Darker purple
+        set_color -o 8B008B # Darker purple
         echo -n (hostname -s)
         set_color normal
     end
@@ -25,7 +25,7 @@ function __user_host
     if test (id -u) -eq 0
         set_color --bold red
     else
-        set_color --bold 006400  # Darker green
+        set_color --bold 006400 # Darker green
     end
     echo -n $USER@(hostname -s) (set_color normal)
 end
@@ -36,7 +36,7 @@ function __current_path
     set repo (git rev-parse --show-toplevel 2>/dev/null)
     if not test "$repo" = ""
         set repo (string replace "$HOME" "" $repo)
-        set path (string replace "$repo" (set_color 8B4513)"$repo"(set_color 444) $path)  # Darker yellow/brown
+        set path (string replace "$repo" (set_color 8B4513)"$repo"(set_color 444) $path) # Darker yellow/brown
     end
 
     echo -n " "$path(set_color normal)
@@ -55,10 +55,10 @@ function __git_status
         set -l git_branch (_git_branch_name)
 
         if [ (_git_is_dirty) ]
-            set git_color "8B4513"  # Darker brown for dirty state
+            set git_color 8B4513 # Darker brown for dirty state
             set git_info '('$git_branch"*"')'
         else
-            set git_color "006400"  # Darker green for clean state
+            set git_color 006400 # Darker green for clean state
             set git_info '('$git_branch')'
         end
 
@@ -68,9 +68,10 @@ end
 
 function fish_prompt -d '"Bira\'s weird cousin" prompt'
     set -l st $status
-    set -l pchar (set_color --bold 444)"❯"  # Darker prompt character
-    if [ $st != 0 ];
-        set pchar (set_color --bold 8B0000)"❯"  # Darker red for error
+    set -l pchar (set_color --bold 444)"❯" # Darker prompt character
+    if [ $st != 0 ]
+
+        set pchar (set_color --bold 8B0000)"❯" # Darker red for error
     end
 
     echo -n (set_color 006400)"┌"(set_color normal)
@@ -83,17 +84,18 @@ function fish_prompt -d '"Bira\'s weird cousin" prompt'
 end
 
 function fish_right_prompt
-    set -l st $status
-    if [ $st != 0 ];
-        echo (set_color 8B0000) ↵ $st (set_color normal)  # Darker red
-    end
-    __ssh_host
-    if test "$CMD_DURATION" -gt 3000
-        set_color 444  # Darker gray
-        set -l duration (echo -n $CMD_DURATION | __human_time)
-        printf ' (%s)' $duration
-    end
-    set_color 444  # Darker gray
-    date '+ %T'
-    set_color normal
+    #    set -l st $status
+    #  if [ $st != 0 ];
+    #      echo (set_color 8B0000) ↵ $st (set_color normal)  # Darker red
+    #  end
+    #  __ssh_host
+    #  if test "$CMD_DURATION" -gt 3000
+    #      set_color 444  # Darker gray
+    #      set -l duration (echo -n $CMD_DURATION | __human_time)
+    #      printf ' (%s)' $duration
+    #  end
+    #  set_color 444  # Darker gray
+    #  date '+ %T'
+    #  set_color normal
 end
+

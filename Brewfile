@@ -35,9 +35,10 @@ brew "neovim"        # Modern fork of vim
 
 # --- Git Tools ---
 brew "git"
+brew "git-delta"     # Beautiful git diffs with syntax highlighting
 brew "git-filter-repo" # Tool to rewrite git history
 brew "gh"            # GitHub CLI tool
-brew "lazygit"                              # a better git UI
+brew "lazygit"       # A better git UI
 brew "stow"          # Symlink farm manager
 
 # --- Development Tools ---
@@ -66,8 +67,11 @@ brew "pandoc"
 
 # --- Search Tools ---
 brew "ack"           # Grep-like text finder
+brew "fd"            # Fast and user-friendly find alternative
 brew "fzf"           # Fuzzy finder
-brew "lnav" # Curses-based tool for viewing and analyzing log files
+brew "lnav"          # Curses-based tool for viewing and analyzing log files
+brew "ripgrep"       # Fast grep alternative (rg)
+brew "zoxide"        # Smarter cd command that learns your habits
 
 # --- Misc Utilities ---
 brew "bat"           # `cat` clone with syntax highlighting
