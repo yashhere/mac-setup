@@ -42,12 +42,22 @@ To skip packages, add to `SKIP_STOW_PACKAGES` in `.env`.
 
 ## iTerm2 Configuration
 
-iTerm2 settings are managed via JSON profiles in `dotfiles/iterm/profiles/`.
+iTerm2 settings are managed via JSON Dynamic Profiles in `dotfiles/iterm/profiles/`.
 
 To export new settings:
 1. iTerm2 → Preferences → Profiles → Other Actions → Save Profile as JSON
-2. Save to `dotfiles/iterm/profiles/`
-3. Re-run `./setup.sh --module configuration`
+2. The exported file needs to be wrapped in a `"Profiles"` array:
+   ```json
+   {
+     "Profiles": [
+       { ...your profile settings... }
+     ]
+   }
+   ```
+3. Save to `dotfiles/iterm/profiles/YourProfileName.json`
+4. Re-run `./setup.sh --module configuration`
+
+The profile will be automatically copied to `~/Library/Application Support/iTerm2/DynamicProfiles/`.
 
 ## Customization
 

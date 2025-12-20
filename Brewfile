@@ -58,7 +58,6 @@ brew "httpie"        # Modern HTTP client (CLI)
 brew "openssh"       # Includes ssh-copy-id utility
 brew "wakeonlan"      # Wake-on-LAN command
 brew "wget"
-brew "guumaster/tap/hostctl"    # manage /etc/hosts like a pro
 
 # --- System Tools ---
 brew "imagemagick"   # Image manipulation tools
@@ -74,7 +73,6 @@ brew "zoxide"        # Smarter cd command that learns your habits
 
 # --- Misc Utilities ---
 brew "bat"           # `cat` clone with syntax highlighting
-brew "cheat"         # Display cheatsheets for command-line tools
 brew "doggo"         # DNS lookup tool
 brew "entr"          # Run arbitrary commands when files change
 brew "ffmpeg"        # Multimedia framework
@@ -82,15 +80,14 @@ brew "glow" # Render markdown on the CLI
 brew "jq"            # JSON processor
 brew "yq"
 brew "lazydocker"                           # a better docker UI
-brew "tealdeer"      # tldr client - simplified man pages
 brew "tree"          # Display directory tree
-brew "superfile"     # fancy file manager for the terminal
 brew "yt-dlp"     # youtube-dl fork with additional features and fixes
 brew "mkcert"
 brew "nss"
 brew "tokei"
 
 # AI tools
+brew "fabric-ai"
 
 if OS.mac?
     # --- macOS Specific Brew Packages ---
@@ -112,10 +109,9 @@ if OS.mac?
     cask "iterm2"        # Terminal emulator
     cask "ghostty"       # Terminal emulator
     cask "maccy"         # Clipboard manager
-    cask "ollama"        # Run large language models locally
+    cask "ollama-app"        # Run large language models locally
     cask "the-unarchiver" # Archive extraction utility
     cask "utm"           # Virtual machine manager
-    cask "vmware-fusion"               # Virtualization software
 
     # --- Development Tools ---
     cask "postman"       # API platform

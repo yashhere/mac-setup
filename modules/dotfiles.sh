@@ -23,7 +23,9 @@ backup_file() {
 # Function to check if a package should be skipped
 should_skip_package() {
     local package="$1"
-    for skip_package in "${SKIP_STOW_PACKAGES[@]}"; do
+    # Convert space-separated string to array
+    local skip_packages_array=($SKIP_STOW_PACKAGES)
+    for skip_package in "${skip_packages_array[@]}"; do
         if [[ "$package" == "$skip_package" ]]; then
             return 0 # Package should be skipped
         fi
