@@ -44,8 +44,8 @@ configure_tmux() {
             log_info "Installing Tmux Plugin Manager..."
             git clone https://github.com/tmux-plugins/tpm "$TPM_DIR"
         else
-            log_info "TPM already installed, pulling latest..."
-            (cd "$TPM_DIR" && git pull --quiet)
+            log_info "TPM already installed, checking for updates..."
+            (cd "$TPM_DIR" && git pull --quiet 2>/dev/null) || log_info "TPM update skipped (no git access)"
         fi
     fi
 }
