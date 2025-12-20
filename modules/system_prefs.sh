@@ -83,9 +83,7 @@ CONFIG_SETTINGS=(
     # Disable the "Are you sure you want to open this application?" dialog
     "com.apple.LaunchServices LSQuarantine false bool"
     "NSGlobalDomain NSAutomaticWindowAnimationsEnabled true bool" # Disable window animations
-    # Use scroll gesture with the Ctrl (^) modifier key to zoom
-    # Requires full disk access
-    "com.apple.universalaccess closeViewScrollWheelToggle true bool"
+    # Note: Universal Access zoom settings require Full Disk Access permission
     # Disable automatic termination of inactive apps
     "NSGlobalDomain NSDisableAutomaticTermination true bool"
 
