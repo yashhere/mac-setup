@@ -3,7 +3,7 @@
 BREWFILE="$SCRIPT_DIR/Brewfile"
 
 APP_STORE_PACKAGES=(
-    # "1091189122::Bear"
+    "1091189122::Bear"
     # "409183694::Keynote"
     # "409203825::Numbers"
     # "409201541::Pages"
@@ -126,7 +126,7 @@ EOF
 }
 
 mas_setup() {
-    return 1
+    return 0
     # https://github.com/mas-cli/mas#known-issues
     # if mas account >/dev/null; then
     #     return 0
