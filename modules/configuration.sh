@@ -19,13 +19,14 @@ setup_brew_packages() {
 
 configure_iterm() {
     if [ -d "/Applications/iTerm.app" ]; then
-        log_info "Setting up iTerm2 preferences..."
+        log_info "Installing iTerm2 JSON profiles..."
+        local PROFILE_DIR="${HOME}/Library/Application Support/iTerm2/DynamicProfiles"
+        mkdir -p "$PROFILE_DIR"
 
-        # Specify the preferences directory
-        defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "$DOTFILES_DIR/iterm"
-
-        # Tell iTerm2 to use the custom preferences in the directory
-        defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
+        if [ -d "${DOTFILES_DIR}/iterm/profiles" ]; then
+            cp "${DOTFILES_DIR}/iterm/profiles"/*.json "$PROFILE_DIR/" 2>/dev/null || true
+            log_success "iTerm2 JSON profiles installed"
+        fi
     fi
 }
 
@@ -38,9 +39,13 @@ configure_tmux() {
             tic -x "${DOTFILES_DIR}/terminfo/xterm-256color-italic.terminfo"
         fi
 
-        if [ ! -d "${DOTFILES_DIR}/tmux/.config/tmux/plugins" ]; then
+        TPM_DIR="${DOTFILES_DIR}/tmux/.config/tmux/plugins/tpm"
+        if [ ! -d "$TPM_DIR" ]; then
             log_info "Installing Tmux Plugin Manager..."
-            git clone https://github.com/tmux-plugins/tpm "${DOTFILES_DIR}/tmux/.config/tmux/plugins/tpm"
+            git clone https://github.com/tmux-plugins/tpm "$TPM_DIR"
+        else
+            log_info "TPM already installed, pulling latest..."
+            (cd "$TPM_DIR" && git pull --quiet)
         fi
     fi
 }
@@ -64,7 +69,7 @@ configure_bat() {
 
             log_success "Catppuccin themes installed for bat/delta"
         else
-            log_info "Catppuccin themes already installed for bat"
+            log_info "Catppuccin themes already installed"
         fi
     fi
 }

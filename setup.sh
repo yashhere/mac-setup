@@ -122,8 +122,8 @@ main() {
     # copy default .env file if not exists
     if [ ! -f .env ]; then
         cp .env.example .env
-        log_warning "Default .env file created. Please fill in the required variables. Else rerun this script."
-        exit 1
+        log_warning "Created .env from template. Review and re-run setup if needed."
+        # Don't exit - let it continue with defaults
     fi
 
     if [ -f .env ]; then

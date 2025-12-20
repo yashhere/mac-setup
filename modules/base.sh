@@ -63,8 +63,18 @@ install_homebrew() {
 
         log_success "Homebrew installed successfully!"
     else
-        log_info "Homebrew already installed, updating..."
-        brew update
+        # Only update brew once per day
+        BREW_CACHE="${HOME}/.cache/mac-setup"
+        mkdir -p "$BREW_CACHE"
+
+        if [ ! -f "${BREW_CACHE}/brew_updated" ] || \
+           [ $(find "${BREW_CACHE}/brew_updated" -mtime +1 2>/dev/null | wc -l) -eq 1 ]; then
+            log_info "Updating Homebrew..."
+            brew update
+            touch "${BREW_CACHE}/brew_updated"
+        else
+            log_info "Homebrew was updated recently, skipping"
+        fi
     fi
 }
 

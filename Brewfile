@@ -54,9 +54,8 @@ brew "gcc"           # GNU compiler collection
 brew "aria2"         # Download manager
 brew "gping"         # Ping, but with a graph
 brew "grpcurl"       # gRPC command line client
-brew "httpie"        # Modern HTTP client
-brew "openssh"
-brew "ssh-copy-id"
+brew "httpie"        # Modern HTTP client (CLI)
+brew "openssh"       # Includes ssh-copy-id utility
 brew "wakeonlan"      # Wake-on-LAN command
 brew "wget"
 brew "guumaster/tap/hostctl"    # manage /etc/hosts like a pro
@@ -121,7 +120,6 @@ if OS.mac?
     # --- Development Tools ---
     cask "postman"       # API platform
     cask "visual-studio-code" # Code editor
-    cask "httpie"
 
     # --- Quick Look Plugins ---
     cask "qlcolorcode"    # Syntax highlighting for code in Quick Look
