@@ -167,7 +167,7 @@
       },
       "Unicode Version": 9,
       "Use Cursor Guide (Light)": false,
-      "Option Key Sends": 2,
+      "Option Key Sends": 0,
       "Idle Code": 0,
       "Ansi 13 Color (Dark)": {
         "Red Component": 0.7333333333333333,
@@ -186,7 +186,7 @@
       "Terminal Type": "xterm-256color",
       "Show Status Bar": false,
       "Cursor Boost (Dark)": 0,
-      "Right Option Key Sends": 2,
+      "Right Option Key Sends": 0,
       "Background Color": {
         "Green Component": "1",
         "Red Component": "1",
@@ -226,7 +226,7 @@
       },
       "Unlimited Scrollback": true,
       "Use Italic Font": true,
-      "Working Directory": "/Users/joshukraine/code",
+      "Working Directory": "~",
       "Selected Text Color (Dark)": {
         "Red Component": 0.7529411764705882,
         "Color Space": "sRGB",
@@ -306,7 +306,7 @@
         "Alpha Component": 1,
         "Green Component": 0.8549019607843137
       },
-      "Custom Command": "Yes",
+      "Custom Command": "No",
       "Jobs to Ignore": [
         "rlogin",
         "ssh",
@@ -330,7 +330,7 @@
         "Green Component": 0.7372549019607844
       },
       "Brighten Bold Text (Dark)": false,
-      "Name": "M4 MacBook Pro",
+      "Name": "Mac",
       "Space": 0,
       "Ansi 11 Color (Dark)": {
         "Red Component": 0.8784313725490196,
@@ -471,7 +471,7 @@
         "Red Component": "0",
         "Blue Component": "0"
       },
-      "Command": "/opt/homebrew/bin/tmux new-session -A -s main",
+      "Command": "",
       "Minimum Contrast (Light)": 0.2020596590909091,
       "Blend": 0.2426469970972111,
       "Character Encoding": 4,
@@ -591,6 +591,38 @@
         "0x5e-0x60000": {
           "Action": 11,
           "Text": "0x1e"
+        },
+        "0xf702-0x100000": {
+          "Action": 11,
+          "Text": "0x01"
+        },
+        "0xf703-0x100000": {
+          "Action": 11,
+          "Text": "0x05"
+        },
+        "0xf702-0x80000": {
+          "Action": 10,
+          "Text": "b",
+          "Escaping": 1
+        },
+        "0xf703-0x80000": {
+          "Action": 10,
+          "Text": "f",
+          "Escaping": 1
+        },
+        "0x7f-0x100000": {
+          "Action": 11,
+          "Text": "0x15"
+        },
+        "0x7f-0x80000": {
+          "Action": 11,
+          "Text": "0x17"
+        },
+        "0x5b-0x140000": {
+          "Action": 2
+        },
+        "0x5d-0x140000": {
+          "Action": 0
         },
         "0xf702-0x280000": {
           "Action": 10,

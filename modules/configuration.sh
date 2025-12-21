@@ -18,15 +18,10 @@ setup_brew_packages() {
 }
 
 configure_iterm() {
+    # iTerm2 dynamic profiles are now managed via GNU Stow
+    # The profile files are symlinked from dotfiles/iterm/Library/Application Support/iTerm2/DynamicProfiles/
     if [ -d "/Applications/iTerm.app" ]; then
-        log_info "Installing iTerm2 JSON profiles..."
-        local PROFILE_DIR="${HOME}/Library/Application Support/iTerm2/DynamicProfiles"
-        mkdir -p "$PROFILE_DIR"
-
-        if [ -d "${DOTFILES_DIR}/iterm/profiles" ]; then
-            cp "${DOTFILES_DIR}/iterm/profiles"/*.json "$PROFILE_DIR/" 2>/dev/null || true
-            log_success "iTerm2 JSON profiles installed"
-        fi
+        log_info "iTerm2 profiles are managed by GNU Stow"
     fi
 }
 
