@@ -141,4 +141,8 @@
         "editor.defaultFormatter": "tamasfe.even-better-toml"
     },
     "docker.extension.dockerEngineAvailabilityPrompt": false,
+    "gitlens.gitkraken.mcp.autoEnabled": false,
+    "workbench.editorAssociations": {
+        "*.md": "vscode.markdown.preview.editor"
+    },
 }

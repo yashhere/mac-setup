@@ -11,7 +11,6 @@ SCREENSHOTS_LOCATION="$HOME/Desktop/screenshots"
 declare -A DOMAIN_PROCESS_MAP=(
     ["com.apple.finder"]="Finder"
     ["com.apple.dock"]="Dock"
-    ["com.apple.Safari"]="Safari"
     ["com.apple.controlcenter"]="ControlCenter"
     ["com.apple.systempreferences"]="System Preferences"
     ["com.apple.ActivityMonitor"]="Activity Monitor"
@@ -84,9 +83,7 @@ CONFIG_SETTINGS=(
     # Disable the "Are you sure you want to open this application?" dialog
     "com.apple.LaunchServices LSQuarantine false bool"
     "NSGlobalDomain NSAutomaticWindowAnimationsEnabled true bool" # Disable window animations
-    # Use scroll gesture with the Ctrl (^) modifier key to zoom
-    # Requires full disk access
-    "com.apple.universalaccess closeViewScrollWheelToggle true bool"
+    # Note: Universal Access zoom settings require Full Disk Access permission
     # Disable automatic termination of inactive apps
     "NSGlobalDomain NSDisableAutomaticTermination true bool"
 
@@ -133,25 +130,6 @@ CONFIG_SETTINGS=(
     "com.apple.terminal FocusFollowsMouse true bool"
     "org.x.X11 wm_ffm true bool"
 
-    # Safari
-    # This requires giving iTerm full disk access
-    "com.apple.Safari IncludeInternalDebugMenu true bool" # Enable Safari's debug menu
-    "com.apple.Safari HomePage about:blank string"        # Set Safari' s home page to `about:blank`
-    # Allow hitting the Backspace key to go to the previous page in history
-    "com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled true bool"
-    "com.apple.Safari ShowSidebarInTopSites false bool" # Hide Safari' s sidebar in Top Sites
-
-    # Make Safari's search banners default to Contains instead of Starts With
-    "com.apple.Safari FindOnPageMatchesWordStartsOnly false bool"
-
-    # Enable the Develop menu and the Web Inspector in Safari
-    "com.apple.Safari IncludeDevelopMenu true bool"
-    "com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey true bool"
-    "com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled true bool"
-
-    # Add a context menu item for showing the Web Inspector in web views
-    "NSGlobalDomain WebKitDeveloperExtras true bool"
-
     # Display
     "NSGlobalDomain AppleFontSmoothing 2 int" # Enable subpixel font rendering on non-Apple LCDs
 
@@ -161,11 +139,6 @@ CONFIG_SETTINGS=(
     "com.apple.ActivityMonitor ShowCategory 0 int"         # Show all processes in Activity Monitor
     "com.apple.ActivityMonitor SortColumn CPUUsage string" # Sort Activity Monitor results by CPU usage
     "com.apple.ActivityMonitor SortDirection 0 int"
-
-    # TextEdit
-    "com.apple.TextEdit RichText 0 int"                  # Use plain text mode for new documents
-    "com.apple.TextEdit PlainTextEncoding 4 int"         # Open files as UTF-8 in TextEdit
-    "com.apple.TextEdit PlainTextEncodingForWrite 4 int" # Save files as UTF-8 in TextEdit
 )
 
 apply_setting() {

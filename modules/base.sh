@@ -3,7 +3,7 @@
 BREWFILE="$SCRIPT_DIR/Brewfile"
 
 APP_STORE_PACKAGES=(
-    # "1091189122::Bear"
+    "1091189122::Bear"
     # "409183694::Keynote"
     # "409203825::Numbers"
     # "409201541::Pages"
@@ -63,8 +63,18 @@ install_homebrew() {
 
         log_success "Homebrew installed successfully!"
     else
-        log_info "Homebrew already installed, updating..."
-        brew update
+        # Only update brew once per day
+        BREW_CACHE="${HOME}/.cache/mac-setup"
+        mkdir -p "$BREW_CACHE"
+
+        if [ ! -f "${BREW_CACHE}/brew_updated" ] || \
+           [ $(find "${BREW_CACHE}/brew_updated" -mtime +1 2>/dev/null | wc -l) -eq 1 ]; then
+            log_info "Updating Homebrew..."
+            brew update
+            touch "${BREW_CACHE}/brew_updated"
+        else
+            log_info "Homebrew was updated recently, skipping"
+        fi
     fi
 }
 
@@ -116,7 +126,7 @@ EOF
 }
 
 mas_setup() {
-    return 1
+    return 0
     # https://github.com/mas-cli/mas#known-issues
     # if mas account >/dev/null; then
     #     return 0

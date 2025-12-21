@@ -23,6 +23,7 @@ brew "moreutils"      # Install some other useful utilities like `sponge`.
 # --- Shell and Terminal ---
 brew "bash"          # Install a modern version of Bash.
 brew "bash-completion2"
+brew "bottom"        # Better top/htop alternative (modern system monitor)
 brew "btop"          # Resource monitor in terminal
 brew "fish"
 brew "htop"          # Interactive process viewer
@@ -37,29 +38,31 @@ brew "neovim"        # Modern fork of vim
 brew "git"
 brew "git-delta"     # Beautiful git diffs with syntax highlighting
 brew "git-filter-repo" # Tool to rewrite git history
+brew "git-lfs"       # Git Large File Storage
 brew "gh"            # GitHub CLI tool
+brew "ghq"           # Git repository manager
 brew "lazygit"       # A better git UI
 brew "stow"          # Symlink farm manager
 
 # --- Development Tools ---
 brew "mise"          # Version manager for multiple languages
 brew "direnv"        # Environment switcher for directories
-brew "gnupg"        # enable PGP-signing commits.
+brew "uv"            # Fast Python package manager (replaces pip/poetry)
+brew "just"          # Command runner (modern alternative to make)
+brew "gnupg"         # enable PGP-signing commits.
 brew "make"
 brew "pre-commit"    # Manage and run git hooks
-brew "shellcheck"                      # diagnostics for shell sripts
+brew "shellcheck"    # diagnostics for shell sripts
 brew "gcc"           # GNU compiler collection
 
 # --- Networking Tools ---
 brew "aria2"         # Download manager
 brew "gping"         # Ping, but with a graph
 brew "grpcurl"       # gRPC command line client
-brew "httpie"        # Modern HTTP client
-brew "openssh"
-brew "ssh-copy-id"
+brew "httpie"        # Modern HTTP client (CLI)
+brew "openssh"       # Includes ssh-copy-id utility
 brew "wakeonlan"      # Wake-on-LAN command
 brew "wget"
-brew "guumaster/tap/hostctl"    # manage /etc/hosts like a pro
 
 # --- System Tools ---
 brew "imagemagick"   # Image manipulation tools
@@ -75,23 +78,23 @@ brew "zoxide"        # Smarter cd command that learns your habits
 
 # --- Misc Utilities ---
 brew "bat"           # `cat` clone with syntax highlighting
-brew "cheat"         # Display cheatsheets for command-line tools
 brew "doggo"         # DNS lookup tool
+brew "duf"           # Better disk usage (modern du alternative)
 brew "entr"          # Run arbitrary commands when files change
 brew "ffmpeg"        # Multimedia framework
-brew "glow" # Render markdown on the CLI
+brew "glow"          # Render markdown on the CLI
 brew "jq"            # JSON processor
-brew "yq"
-brew "lazydocker"                           # a better docker UI
-brew "tealdeer"      # tldr client - simplified man pages
+brew "yq"            # YAML processor
+brew "yazi"          # Terminal file manager (Vim-like)
+brew "lazydocker"    # a better docker UI
 brew "tree"          # Display directory tree
-brew "superfile"     # fancy file manager for the terminal
-brew "yt-dlp"     # youtube-dl fork with additional features and fixes
-brew "mkcert"
-brew "nss"
-brew "tokei"
+brew "yt-dlp"        # youtube-dl fork with additional features and fixes
+brew "mkcert"        # Local HTTPS certificates
+brew "nss"           # Network Security Services
+brew "tokei"         # Code statistics tool
 
 # AI tools
+brew "fabric-ai"
 
 if OS.mac?
     # --- macOS Specific Brew Packages ---
@@ -113,15 +116,13 @@ if OS.mac?
     cask "iterm2"        # Terminal emulator
     cask "ghostty"       # Terminal emulator
     cask "maccy"         # Clipboard manager
-    cask "ollama"        # Run large language models locally
+    cask "ollama-app"        # Run large language models locally
     cask "the-unarchiver" # Archive extraction utility
     cask "utm"           # Virtual machine manager
-    cask "vmware-fusion"               # Virtualization software
 
     # --- Development Tools ---
     cask "postman"       # API platform
     cask "visual-studio-code" # Code editor
-    cask "httpie"
 
     # --- Quick Look Plugins ---
     cask "qlcolorcode"    # Syntax highlighting for code in Quick Look

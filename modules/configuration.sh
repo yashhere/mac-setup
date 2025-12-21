@@ -18,14 +18,10 @@ setup_brew_packages() {
 }
 
 configure_iterm() {
+    # iTerm2 dynamic profiles are now managed via GNU Stow
+    # The profile files are symlinked from dotfiles/iterm/Library/Application Support/iTerm2/DynamicProfiles/
     if [ -d "/Applications/iTerm.app" ]; then
-        log_info "Setting up iTerm2 preferences..."
-
-        # Specify the preferences directory
-        defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "$DOTFILES_DIR/iterm"
-
-        # Tell iTerm2 to use the custom preferences in the directory
-        defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
+        log_info "iTerm2 profiles are managed by GNU Stow"
     fi
 }
 
@@ -38,9 +34,13 @@ configure_tmux() {
             tic -x "${DOTFILES_DIR}/terminfo/xterm-256color-italic.terminfo"
         fi
 
-        if [ ! -d "${DOTFILES_DIR}/tmux/.config/tmux/plugins" ]; then
+        TPM_DIR="${DOTFILES_DIR}/tmux/.config/tmux/plugins/tpm"
+        if [ ! -d "$TPM_DIR" ]; then
             log_info "Installing Tmux Plugin Manager..."
-            git clone https://github.com/tmux-plugins/tpm "${DOTFILES_DIR}/tmux/.config/tmux/plugins/tpm"
+            git clone https://github.com/tmux-plugins/tpm "$TPM_DIR"
+        else
+            log_info "TPM already installed, checking for updates..."
+            (cd "$TPM_DIR" && git pull --quiet 2>/dev/null) || log_info "TPM update skipped (no git access)"
         fi
     fi
 }
@@ -64,7 +64,7 @@ configure_bat() {
 
             log_success "Catppuccin themes installed for bat/delta"
         else
-            log_info "Catppuccin themes already installed for bat"
+            log_info "Catppuccin themes already installed"
         fi
     fi
 }

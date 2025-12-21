@@ -76,6 +76,21 @@ remotes = remote -v                                                             
 dg = "!sh -c 'git ls-files -m | grep $1 | xargs git diff' -"         # Diff grep modified files
 dgc = "!sh -c 'git ls-files | grep $1 | xargs git diff $2 $3 -- ' -" # Diff grep between commits
 
+# Modern workflow aliases
+amend = commit --amend --no-edit                                       # Quick amend without changing message
+fixup = "!sh -c 'git commit --fixup=$1' -"                            # Create fixup commit for interactive rebase
+oops = !git reset --soft HEAD~1                                        # Undo last commit but keep changes
+yeet = push --force-with-lease                                         # Force push safely (checks remote first)
+stash-all = stash --include-untracked                                  # Stash everything including untracked files
+unstash = stash pop                                                    # Quick unstash
+root = rev-parse --show-toplevel                                       # Show repository root directory
+clean-local = "!git branch --merged | grep -v '\\*\\|main\\|master\\|develop' | xargs -n1 git branch -d" # Delete merged local branches
+recent = !git branch --sort=-committerdate | head -20                  # Show 20 most recent branches
+reset-author = commit --amend --reset-author --no-edit                 # Fix author on last commit
+undo = reset HEAD~1 --mixed                                            # Undo last commit and unstage changes
+wip = !git add -A && git commit -m "WIP" --no-verify                  # Quick WIP commit (skip hooks)
+unwip = !git log -n 1 | grep -q -c "WIP" && git reset HEAD~1          # Undo WIP commit if last commit was WIP
+
 [push]
 default = current # Default push behavior to current branch
 

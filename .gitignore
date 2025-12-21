@@ -5,3 +5,4 @@
 *.log
 *.env
 **/.config/tmux/plugins
+dotfiles/iterm/com.googlecode.iterm2.plist
