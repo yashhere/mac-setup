@@ -1,35 +1,156 @@
-# Example config.toml for mise
-[settings]
-legacy_version_file = true  # For compatibility with .node-version, .python-version etc.
-jobs = 4                    # Number of jobs to run in parallel
-idiomatic_version_file_enable_tools = ["node"]
+# mise configuration - Tool version management
+# Documentation: https://mise.jdx.dev/
 
+# ============================================================================
+# GLOBAL SETTINGS
+# ============================================================================
+[settings]
+# Compatibility with legacy version files (.node-version, .python-version, etc.)
+legacy_version_file = true
+# Number of jobs to run in parallel during installation
+jobs = 4
+# Enable idiomatic version files for specific tools
+idiomatic_version_file_enable_tools = ["node"]
+# Experimental features
+experimental = true
+# Verbose output for debugging (set to false for normal use)
+verbose = false
+# Auto-install tools when entering directory with .tool-versions
+auto_install = true
+# Always keep plugins up to date
+always_keep_download = false
+# Use new asdf plugin repo
+asdf_compat = false
+
+# npm backend settings - use bun instead of npm
 [settings.npm]
 bun = true
 
+# cargo backend settings - use cargo-binstall for faster binary installations
 [settings.cargo]
 binstall = true
 
+# pipx backend settings - use uvx instead of pipx
 [settings.pipx]
 uvx = true
 
-# You can add tool-specific configurations
+# ============================================================================
+# PROGRAMMING LANGUAGES & RUNTIMES
+# ============================================================================
 [tools]
-node = "25"
-python = ['latest', '3.13', '3.12', '3.11']
-rust = "stable"
-go = "latest"
-bun = 'latest'
-ruby = 'latest'
-cargo-binstall = 'latest'
+# JavaScript/TypeScript ecosystem
+node = "25"              # Latest Node.js LTS
+bun = "latest"           # Fast JavaScript runtime and package manager
+deno = "latest"          # Secure runtime for JavaScript and TypeScript
 
-# npm (there is not .default-npm-packages)
+# Python ecosystem - multiple versions for compatibility testing
+python = ["latest", "3.13", "3.12", "3.11"]
+
+# Go - latest stable
+go = "latest"
+
+# Rust - stable channel
+rust = "stable"
+
+# Ruby - latest stable
+ruby = "latest"
+
+# Java - latest LTS
+java = "latest"
+
+# ============================================================================
+# BUILD TOOLS & PACKAGE MANAGERS
+# ============================================================================
+cargo-binstall = "latest"  # Fast cargo binary installer
+
+# ============================================================================
+# NPM GLOBAL PACKAGES (via bun)
+# ============================================================================
+# Linting & Formatting
 "npm:eslint" = "latest"
 "npm:prettier" = "latest"
+"npm:@biomejs/biome" = "latest"  # Fast formatter/linter
+
+# TypeScript tooling
 "npm:typescript" = "latest"
 "npm:ts-node" = "latest"
-"npm:concurrently" = "latest"
+"npm:tsx" = "latest"             # Fast TypeScript execution
+
+# Package managers
 "npm:pnpm" = "latest"
+"npm:yarn" = "latest"
+
+# Development utilities
+"npm:concurrently" = "latest"
+"npm:nodemon" = "latest"
+"npm:npm-check-updates" = "latest"  # Update package.json dependencies
+
+# Build tools
+"npm:vite" = "latest"
+"npm:turbo" = "latest"           # Monorepo build system
+"npm:webpack" = "latest"
+
+# Testing
+"npm:vitest" = "latest"
+
+# AI/CLI tools
 "npm:@github/copilot" = "latest"
+"npm:@google/generative-ai" = "latest"
+
+# Documentation & Diagrams
 "npm:@mermaid-js/mermaid-cli" = "latest"
+
+# Cloud & Deployment
+"npm:vercel" = "latest"
+"npm:wrangler" = "latest"        # Cloudflare Workers CLI
+
+# ============================================================================
+# NOTES
+# ============================================================================
+# Infrastructure tools (terraform, kubectl, helm, awscli) are now in Homebrew
+# If you need project-specific versions of these tools, add them here using:
+# "aqua:hashicorp/terraform" = "1.5.0"  # Pin to specific version
+# "aqua:kubernetes/kubectl" = "1.28"    # Pin to specific version
+
+# ============================================================================
+# ENVIRONMENT VARIABLES
+# ============================================================================
+[env]
+# Editor preference
+EDITOR = "code"
+VISUAL = "code"
+
+# Python
+PYTHONDONTWRITEBYTECODE = "1"    # Don't create .pyc files
+PYTHONUNBUFFERED = "1"           # Force unbuffered output
+
+# Node
+NODE_ENV = "development"
+
+# Go
+GOPATH = "{{env.HOME}}/go"
+GO111MODULE = "on"
+
+# Rust
+CARGO_HOME = "{{env.HOME}}/.cargo"
+RUSTUP_HOME = "{{env.HOME}}/.rustup"
+
+# ============================================================================
+# TASKS (mise task runner)
+# ============================================================================
+[tasks.update]
+description = "Update all mise tools"
+run = "mise upgrade && mise prune"
+
+[tasks.clean]
+description = "Clean mise cache and unused versions"
+run = "mise cache clear && mise prune -y"
+
+[tasks.doctor]
+description = "Check mise installation health"
+run = "mise doctor"
+
+[tasks.outdated]
+description = "Check for outdated tools"
+run = "mise outdated"
 

@@ -1,6 +1,6 @@
-function ls --wraps lsd --description "alias ls=lsd"
-    if type -q lsd
-        lsd $argv
+function ls --wraps eza --description "alias ls=eza"
+    if type -q eza
+        eza $argv
     else
         command ls $argv
     end

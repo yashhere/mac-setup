@@ -23,11 +23,9 @@ brew "moreutils"      # Install some other useful utilities like `sponge`.
 # --- Shell and Terminal ---
 brew "bash"          # Install a modern version of Bash.
 brew "bash-completion2"
-brew "bottom"        # Better top/htop alternative (modern system monitor)
-brew "btop"          # Resource monitor in terminal
+brew "btop"          # Resource monitor in terminal (better than bottom/htop)
 brew "fish"
 brew "htop"          # Interactive process viewer
-brew "lsd"           # Next gen `ls` command
 brew "neofetch"      # System information tool
 brew "screen"
 brew "tmux"          # Terminal multiplexer
@@ -36,12 +34,13 @@ brew "neovim"        # Modern fork of vim
 
 # --- Git Tools ---
 brew "git"
+brew "git-cliff"     # Changelog generator
 brew "git-delta"     # Beautiful git diffs with syntax highlighting
 brew "git-filter-repo" # Tool to rewrite git history
 brew "git-lfs"       # Git Large File Storage
 brew "gh"            # GitHub CLI tool
 brew "ghq"           # Git repository manager
-brew "lazygit"       # A better git UI
+brew "lazygit"       # Terminal UI for git
 brew "stow"          # Symlink farm manager
 
 # --- Development Tools ---
@@ -54,6 +53,17 @@ brew "make"
 brew "pre-commit"    # Manage and run git hooks
 brew "shellcheck"    # diagnostics for shell sripts
 brew "gcc"           # GNU compiler collection
+
+# Python tool
+brew "black"         # Python code formatter
+brew "ruff"          # Fast Python linter
+brew "ipython"       # Enhanced Python REPL
+
+# Infrastructure & Cloud
+brew "terraform"     # Infrastructure as code
+brew "kubectl"       # Kubernetes CLI
+brew "helm"          # Kubernetes package manager
+brew "awscli"        # AWS CLI
 
 # --- Networking Tools ---
 brew "aria2"         # Download manager
@@ -75,15 +85,20 @@ brew "fzf"           # Fuzzy finder
 brew "lnav"          # Curses-based tool for viewing and analyzing log files
 brew "ripgrep"       # Fast grep alternative (rg)
 brew "zoxide"        # Smarter cd command that learns your habits
+brew "sd"            # Better sed - Intuitive find & replace CLI
 
 # --- Misc Utilities ---
 brew "bat"           # `cat` clone with syntax highlighting
+brew "choose-rust"   # Better cut/awk alternative
 brew "doggo"         # DNS lookup tool
-brew "duf"           # Better disk usage (modern du alternative)
-brew "entr"          # Run arbitrary commands when files change
+brew "dust"          # Better du with tree view
+brew "eza"           # Modern ls replacement
+brew "watchexec"     # Execute commands when files change
 brew "ffmpeg"        # Multimedia framework
 brew "glow"          # Render markdown on the CLI
+brew "hyperfine"     # Command-line benchmarking tool
 brew "jq"            # JSON processor
+brew "procs"         # Modern replacement for ps
 brew "yq"            # YAML processor
 brew "yazi"          # Terminal file manager (Vim-like)
 brew "lazydocker"    # a better docker UI
