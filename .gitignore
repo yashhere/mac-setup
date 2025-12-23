@@ -1,8 +1,8 @@
-.aider*
-**/aider/.aider/caches
-!dotfiles/aider/.aider.conf.yml
 .env
 *.log
 *.env
 **/.config/tmux/plugins
 dotfiles/iterm/com.googlecode.iterm2.plist
+
+# VSCode machine-specific settings
+dotfiles/code/**/settings.local.json

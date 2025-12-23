@@ -34,6 +34,4 @@ if status --is-interactive
     alias rmdot="rm -rf .[!.]*"
     alias sudoedit="sudo $EDITOR"
     alias rs="exec $SHELL"
-
-    alias aider="aider --env-file $HOME/.env"
 end

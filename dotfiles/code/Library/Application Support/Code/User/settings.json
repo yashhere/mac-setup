@@ -97,7 +97,6 @@
         "editor.tabSize": 2
     },
     "editor.accessibilitySupport": "off",
-    "window.autoDetectColorScheme": true,
     "livePreview.autoRefreshPreview": "Never",
     "[mdx]": {
         "editor.wordWrap": "on"
@@ -144,5 +143,8 @@
     "gitlens.gitkraken.mcp.autoEnabled": false,
     "workbench.editorAssociations": {
         "*.md": "vscode.markdown.preview.editor"
+    },
+    "[astro]": {
+        "editor.defaultFormatter": "astro-build.astro-vscode"
     },
 }
