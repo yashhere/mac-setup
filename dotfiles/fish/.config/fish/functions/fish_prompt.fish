@@ -14,6 +14,7 @@ set -g __fish_prompt_color_duration 7c7f93   # Overlay 1
 set -g __fish_prompt_color_dim 9ca0b0        # Overlay 0
 set -g __fish_prompt_color_prompt 04a5e5     # Sky
 set -g __fish_prompt_color_venv 179299       # Teal
+set -g __fish_prompt_color_ssh d20f39        # Red (for SSH indicator)
 
 function __prompt_git_info
     # Fast check if we're in a git repo
@@ -94,6 +95,19 @@ function __prompt_venv
     end
 end
 
+function __prompt_ssh
+    # Show prominent SSH indicator when in SSH session
+    if test -n "$SSH_CLIENT$SSH2_CLIENT$SSH_TTY"
+        set_color --bold $__fish_prompt_color_ssh
+        echo -n " [SSH:"
+        set_color --bold --underline $__fish_prompt_color_ssh
+        echo -n (hostname -s)
+        set_color --bold $__fish_prompt_color_ssh
+        echo -n "]"
+        set_color normal
+    end
+end
+
 function __prompt_duration
     # Only show if command took longer than 3 seconds
     if test $CMD_DURATION -gt 3000
@@ -150,9 +164,10 @@ end
 function fish_prompt
     set -l last_status $status
 
-    # Line 1: path + git + venv
+    # Line 1: path + SSH indicator + git + venv
     echo
     __prompt_pwd
+    __prompt_ssh
     __prompt_git_info
     __prompt_venv
     __prompt_duration
