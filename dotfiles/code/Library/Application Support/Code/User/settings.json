@@ -147,4 +147,5 @@
     "[astro]": {
         "editor.defaultFormatter": "astro-build.astro-vscode"
     },
+    "github.copilot.nextEditSuggestions.enabled": true,
 }
