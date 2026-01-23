@@ -2,7 +2,9 @@
 # Suppress log noise
 load_dotenv = true
 strict_env = false
+hide_env_diff = true
+warn_timeout = "5s"
 
-[whitelist]
+[allowlist]
 # Directories where direnv is always allowed
 prefix = ["~/projects", "~/work", "~/code"]

@@ -42,7 +42,11 @@ fish_add_path "$HOME/.local/bin"
 # LM Studio CLI
 fish_add_path /Users/yagarwal/.lmstudio/bin
 
+# Direnv hook - filter out routine loading messages but keep errors/blocks
 direnv hook fish | source
+function __direnv_export_eval --on-event fish_prompt
+    eval (direnv export fish 2>&1 | string match -rv '^direnv: (loading|export)' | string collect)
+end
 
 # Initialize zoxide as cd replacement (smarter cd)
 if type -q zoxide
