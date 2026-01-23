@@ -34,4 +34,34 @@ if status --is-interactive
     alias rmdot="rm -rf .[!.]*"
     alias sudoedit="sudo $EDITOR"
     alias rs="exec $SHELL"
+
+    # Docker
+    alias dps="docker ps"
+    alias dpsa="docker ps -a"
+    alias dim="docker images"
+    alias dl="docker logs -f"
+    alias di="docker inspect"
+    alias dnames="docker ps --format '{{.Names}}'"
+    alias dip="docker ps -q | xargs -n 1 docker inspect --format '{{.Name}} {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' | sed 's/^\///' | column -t"
+    alias drmc="docker rm (docker ps -aq -f status=exited)"
+    alias drmid="docker rmi (docker images -qf dangling=true)"
+
+    # Docker Compose
+    alias dc="docker compose"
+    alias dcu="docker compose up -d"
+    alias dcd="docker compose down"
+    alias dcr="docker compose run"
+end
+
+# Docker functions
+function dex -d "Execute bash shell in running container"
+    docker exec -it $argv[1] /bin/bash
+end
+
+function drun -d "Run bash shell in new container from image"
+    docker run -it --rm $argv[1] /bin/bash
+end
+
+function dsr -d "Stop then remove container"
+    docker stop $argv[1] && docker rm $argv[1]
 end

@@ -119,7 +119,7 @@ stat = true            # Show diffstat after merges
 log = true             # Include summaries of merged commits in merge commit messages
 
 [credential]
-helper = manager # Use git credential manager
+helper = /usr/local/share/gcm-core/git-credential-manager
 
 [diff]
 mnemonicprefix = true  # Show mnemonic prefixes in diff output
@@ -204,4 +204,7 @@ useHttpPath = true
 insteadOf = https://github.com/
 
 [include]
-    path = ~/.gitconfig-work
+path = ~/.gitconfig-work
+
+[credential "https://git.lan"]
+provider = generic
